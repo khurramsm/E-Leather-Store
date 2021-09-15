@@ -3,7 +3,7 @@ import ProductPage from "./components/ProductPage";
 import CartPage from "./components/CartPage";
 import CheckoutPage from "./components/CheckoutPage";
 import ContactPage from "./components/ContactPage";
-import { Switch, Route, Redirect } from "react-router-dom";
+import { Switch, Route } from "react-router-dom";
 import Navigation from "./components/Navigation";
 import FooterPage from "./components/FooterPage";
 
@@ -17,6 +17,7 @@ function App() {
         <Route exact path="/cart" component={CartPage} />
         <Route exact path="/checkout" component={CheckoutPage} />
         <Route exact path="/contact" component={ContactPage} />
+     
       </Switch>
       <FooterPage />
     </div>
