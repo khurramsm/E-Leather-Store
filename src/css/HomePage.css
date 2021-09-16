@@ -1,0 +1,31 @@
+.homePage {
+  display: flex;
+  align-items: center;
+  padding: 4rem;
+}
+.homePage .product-image {
+  width: 600px;
+  height: 600px;
+  background-color: saddlebrown;
+  box-shadow: 0.2rem 0.2rem 0.2rem #cccc;
+  overflow: hidden;
+  margin-right: 5rem;
+}
+.homePage .product-image img {
+  width: 100%;
+}
+.startOrder {
+  border: 2px solid sienna;
+  border-left: 8px solid sienna;
+  box-shadow: 0.2rem 0.2rem 0.2rem rgb(250, 238, 230);
+  color: sienna;
+  text-decoration: none !important;
+  padding: 1rem 3rem;
+  margin-top: 2rem;
+  border-radius: 8px;
+}
+
+.startOrder:hover {
+  background-color: sienna;
+  color: #fff;
+}
