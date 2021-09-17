@@ -14,15 +14,18 @@
 .homePage .product-image img {
   width: 100%;
 }
+.product-content .product-details {
+  margin-bottom: 2rem;
+}
 .startOrder {
   border: 2px solid sienna;
   border-left: 8px solid sienna;
   box-shadow: 0.2rem 0.2rem 0.2rem rgb(250, 238, 230);
   color: sienna;
   text-decoration: none !important;
-  padding: 1rem 3rem;
-  margin-top: 2rem;
+  padding: 0.5rem 3rem;
   border-radius: 8px;
+  font-size: 0.8rem;
 }
 
 .startOrder:hover {
