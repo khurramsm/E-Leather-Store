@@ -5,10 +5,10 @@ import { useState } from "react";
 const ProductPage = () => {
   //Leather Jacket
   const [leatherColor, setLeatherColor] = useState(false);
-  const [leatherType, setLeatherType] = useState(false);
-  const [liningColor, setLiningColor] = useState(false);
-  const [hardwareColor, setHardwareColor] = useState(false);
-  const [studsType, setStudsType] = useState(false);
+  // const [leatherType, setLeatherType] = useState(false);
+  // const [liningColor, setLiningColor] = useState(false);
+  // const [hardwareColor, setHardwareColor] = useState(false);
+  // const [studsType, setStudsType] = useState(false);
   const [productCart, setProductCart] = useState(0);
 
   return (
@@ -22,37 +22,28 @@ const ProductPage = () => {
       <h5>Step 1</h5>
       upload your design
       <h5>Step 2</h5>
-      <button
-        className="customizeProductButton"
-        onClick={() => setLeatherColor(!leatherColor)}
-      >
-        Select Leather Color <span>{leatherColor ? "^" : ">"}</span>
-      </button>
-      <button
-        className="customizeProductButton"
-        onClick={() => setLeatherType(!leatherType)}
-      >
-        Select Leather Type <span>{"^"}</span>
-      </button>
-      <button
-        className="customizeProductButton"
-        onClick={() => setLiningColor(!liningColor)}
-      >
-        Select Lining Color <span>{"^"}</span>
-      </button>
-      <button
-        className="customizeProductButton"
-        onClick={() => setHardwareColor(!hardwareColor)}
-      >
-        Select Hardware Color <span>{"^"}</span>
-      </button>
-      <button
-        className="customizeProductButton"
-        onClick={() => setStudsType(!studsType)}
-      >
-        Select Studs <span>{"^"}</span>
-      </button>
-      <br />
+      {[
+        "Select Leather Color",
+        "Select Leather Type",
+        "Select Lining Color",
+        "Select Hardware Color",
+        "Select Studs ",
+      ].map((item, ind) => (
+        <button
+          key={ind}
+          className="customizeProductButton"
+          onClick={() => setLeatherColor(!leatherColor)}
+        >
+          {item}
+          <span>
+            {leatherColor ? (
+              <i className="fa fa-chevron-down"></i>
+            ) : (
+              <i className="fa fa-chevron-up"></i>
+            )}
+          </span>
+        </button>
+      ))}
       <h5>Step 3</h5>
       Select your Size
       <br />
