@@ -1,13 +1,14 @@
-.customizeProductButton{
-    background: linear-gradient(to left, rgba(0, 0, 0, 0.945), rgb(0, 0, 0));
-    color: #fffff1;
-    outline: none !important;
-    border: none !important;
-    padding: 0.7rem 2rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 90vw;
-    margin: 1rem;
-    text-align: left;
+
+.customizeProductButton {
+  background: linear-gradient(to left, rgba(0, 0, 0, 0.945), rgb(0, 0, 0));
+  color: #fffff1;
+  outline: none !important;
+  border: none !important;
+  padding: 0.7rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin: 1rem auto;
+  text-align: left;
 }
