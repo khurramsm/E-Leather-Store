@@ -1,6 +1,10 @@
 .homePage {
   background-color: rgb(248, 246, 246);
 }
+.homePage .row {
+  margin-top: 3.4rem;
+  margin-bottom: 2.5rem;
+}
 
 .homePage .product-image {
   background-color: #fff;

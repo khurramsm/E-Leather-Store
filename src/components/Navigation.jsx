@@ -1,10 +1,9 @@
 import "../css/Navigation.css";
 import { NavLink } from "react-router-dom";
 
-const Navigation = ({cart}) => {
-  
+const Navigation = ({ cart }) => {
   return (
-    <nav className="navbar navbar-expand-md navbar-light">
+    <nav className="navbar navbar-expand-md navbar-light fixed-top">
       <div className="container">
         <NavLink className="navbar-brand text-dark" to="/">
           logo
