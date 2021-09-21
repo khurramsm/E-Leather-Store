@@ -5,12 +5,33 @@
   border: none !important;
   margin: 1rem auto;
 }
+.product-page h2 {
+  margin-top: 4rem;
+}
 .product-page h5 {
   font-size: 2rem;
   margin: 1rem auto;
   color: #000;
 }
-.product-page .row {
-  margin-top: 2.5rem;
+.product-page .prow {
+  margin-top: 0.5rem;
   margin-bottom: 2.5rem;
+}
+.gender {
+  display: flex;
+}
+.gender .forMen,
+.gender .forWoMen {
+  border: 1px solid #000;
+  padding: .5rem 1rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+.gender .forMen {
+  margin-right: 1rem;
+}
+.gender .forMen:hover,
+.gender .forWoMen:hover {
+  background-color: #000;
+  color: #fff;
 }

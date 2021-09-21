@@ -1,7 +1,11 @@
 import "../css/ProductPage.css";
 import { NavLink } from "react-router-dom";
 import { useState } from "react";
-import ProductCustomAcc from "./ProductCustomAcc";
+import LeatherColorAcc from "./LeatherColorAcc";
+import LeatherTypeAcc from "./LeatherTypeAcc";
+import LiningColorAcc from "./LiningColorAcc";
+import HardwareColorAcc from "./HardwareColorAcc";
+import SelectStudsAcc from "./SelectStudsAcc";
 
 const ProductPage = ({ setCart, cart }) => {
   //Leather Jacket
@@ -10,22 +14,50 @@ const ProductPage = ({ setCart, cart }) => {
   const [liningColor, setLiningColor] = useState("");
   const [hardwareColor, setHardwareColor] = useState("");
   const [studsType, setStudsType] = useState("");
+  const [men, women] = useState("");
 
   return (
     <div className="product-page container-fluid ">
-      <div className="container p-3 ">
-        <div className="row py-3">
+      <div className="container p-3">
+        <h2 className="text-center">Design Your Custom Leather Jacket Now!</h2>
+        <div className="row prow py-3">
           <div className="col-md-12">
-            <h5>Step 1</h5>
-            upload your design
-            <h5>Step 2</h5>
-            <ProductCustomAcc accTitle={"Select Leather Color"} />
-            <ProductCustomAcc accTitle={"Select Leather Type"} />
-            <ProductCustomAcc accTitle={"Select Lining Color"} />
-            <ProductCustomAcc accTitle={"Select Hardware Color"} />
-            <ProductCustomAcc accTitle={"Select Studs "} />
-            <h5>Step 3</h5>
-            Select your Size
+            <div>
+              <h5>Step 1: Upload Images</h5>
+              <p>
+                Upload the image of the leather jacket you want to customize.
+                You can also explain the changes you want in the images and
+                attach them to this section. Leather Jacket selection can be
+                from our website OR you can upload any design from the internet
+                and we will customize the leather jackets for you. excited?
+              </p>
+            </div>
+            <div>
+              <h5>Step 2: Customize Product (Optional)</h5>
+              <p>
+                Now, tell us how would you like us to customize the leather
+                jackets for you? We can customize the jacket’s color, lining,
+                studs, embroidery, design, and anything else you can think of!
+                So, let us know your requirements and we will make it happen.{" "}
+                <br />
+                <strong>Note:</strong>The default value of 'No change - As shown
+                in the Pictures' means that we will make no change in that area
+                on the jacket e.g. 'No Change' in Choosing Leather Color means
+                we will take the color as in the images uploaded by you.
+              </p>
+              <LeatherColorAcc />
+              <LeatherTypeAcc />
+              <LiningColorAcc />
+              <HardwareColorAcc />
+              <SelectStudsAcc />
+            </div>
+            <div>
+              <h5>Step 3: Select Size</h5>
+              <div className="gender">
+                <div className="forMen">For Men</div>
+                <div className="forWoMen">For Women</div>
+              </div>
+            </div>
             <div className="text-center">
               <button className="btnWebsite" onClick={() => setCart(cart + 1)}>
                 Add to Cart
