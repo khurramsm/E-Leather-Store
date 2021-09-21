@@ -1,12 +1,15 @@
 import "../css/Navigation.css";
+import { NavLink } from "react-router-dom";
+import { useState } from "react";
 
 const Navigation = () => {
+  const [cart, setCart] = useState(2);
   return (
-    <nav className="navbar navbar-expand-md">
+    <nav className="navbar navbar-expand-md navbar-light">
       <div className="container">
-        <a className="navbar-brand text-dark" href="#">
+        <NavLink className="navbar-brand text-dark" to="/">
           logo
-        </a>
+        </NavLink>
         <button
           className="navbar-toggler"
           type="button"
@@ -19,18 +22,18 @@ const Navigation = () => {
           <span className="navbar-toggler-icon"></span>
         </button>
         <div className="collapse navbar-collapse" id="navbarNav">
-          <ul className="navbar-nav ml-auto ">
-            <li className="nav-item">
-              <a className="nav-link text-dark" href="#contact">
-                Contact
-              </a>
-            </li>
-            <li className="nav-item ">
-              <a className="nav-link text-dark" href="#about">
-                About Us
-              </a>
-            </li>
-          </ul>
+          <div className="navbar-nav ml-auto ">
+            <NavLink to="/contact" className="navigation-links mr-3">
+              Contact
+            </NavLink>
+            <NavLink to="/about" className="navigation-links mr-3">
+              About
+            </NavLink>
+            <NavLink to="/cart" className="navigation-links mr-3">
+              <i className="fas fa-shopping-cart"></i>
+              <span>{cart}</span>
+            </NavLink>
+          </div>
         </div>
       </div>
     </nav>
