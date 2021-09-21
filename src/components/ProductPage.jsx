@@ -45,11 +45,26 @@ const ProductPage = ({ setCart, cart }) => {
                 on the jacket e.g. 'No Change' in Choosing Leather Color means
                 we will take the color as in the images uploaded by you.
               </p>
-              <LeatherColorAcc />
-              <LeatherTypeAcc />
-              <LiningColorAcc />
-              <HardwareColorAcc />
-              <SelectStudsAcc />
+              <LeatherColorAcc
+                leatherColor={leatherColor}
+                setLeatherColor={setLeatherColor}
+              />
+              <LeatherTypeAcc
+                leatherType={leatherType}
+                setLeatherType={setLeatherType}
+              />
+              <LiningColorAcc
+                liningColor={liningColor}
+                setLiningColor={setLiningColor}
+              />
+              <HardwareColorAcc
+                hardwareColor={hardwareColor}
+                setHardwareColor={setHardwareColor}
+              />
+              <SelectStudsAcc
+                studsType={studsType}
+                setStudsType={setStudsType}
+              />
             </div>
             <div>
               <h5>Step 3: Select Size</h5>

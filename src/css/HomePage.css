@@ -4,6 +4,7 @@
 .homePage .row {
   margin-top: 3.4rem;
   margin-bottom: 2.5rem;
+  padding: 2rem 1.5rem;
 }
 
 .homePage .product-image {
@@ -16,7 +17,13 @@
 }
 .product-content {
   margin-bottom: 2rem;
+  padding: 2rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
+}
+@media (max-width: 882px) {
+  .product-content {
+    padding: 2rem 0rem;
+  }
 }
