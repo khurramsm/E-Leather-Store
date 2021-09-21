@@ -1,9 +1,8 @@
 import "../css/Navigation.css";
 import { NavLink } from "react-router-dom";
-import { useState } from "react";
 
-const Navigation = () => {
-  const [cart, setCart] = useState(2);
+const Navigation = ({cart}) => {
+  
   return (
     <nav className="navbar navbar-expand-md navbar-light">
       <div className="container">

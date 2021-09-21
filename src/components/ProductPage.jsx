@@ -2,14 +2,14 @@ import "../css/ProductPage.css";
 import { NavLink } from "react-router-dom";
 import { useState } from "react";
 
-const ProductPage = () => {
+const ProductPage = ({setCart, cart}) => {
   //Leather Jacket
   const [leatherColor, setLeatherColor] = useState(false);
   // const [leatherType, setLeatherType] = useState(false);
   // const [liningColor, setLiningColor] = useState(false);
   // const [hardwareColor, setHardwareColor] = useState(false);
   // const [studsType, setStudsType] = useState(false);
-  const [productCart, setProductCart] = useState(0);
+  // const [productCart, setProductCart] = useState(0);
 
   return (
     <div className="product-page container-fluid bg-primary">
@@ -44,11 +44,11 @@ const ProductPage = () => {
             <h5>Step 3</h5>
             Select your Size
             <br />
-            <button onClick={() => setProductCart(productCart + 1)}>
+            <button onClick={() => setCart(cart + 1)}>
               Add to Cart
             </button>
             <br />
-            {productCart > 0 && <NavLink to="/cart">Proceed to Cart</NavLink>}
+            {cart > 0 && <NavLink to="/cart">Proceed to Cart</NavLink>}
           </div>
         </div>
       </div>
