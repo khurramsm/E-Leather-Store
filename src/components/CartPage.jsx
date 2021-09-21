@@ -3,8 +3,10 @@ import { NavLink } from "react-router-dom";
 
 const CartPage = () => {
   return (
-    <div>
-      CartPage <NavLink to="/checkout">Proceed to Checkout</NavLink>{" "}
+    <div className="cart-page">
+      <NavLink className="btnWebsite" to="/checkout">
+        Proceed to Checkout
+      </NavLink>
     </div>
   );
 };

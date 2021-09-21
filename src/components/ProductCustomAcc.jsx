@@ -15,7 +15,13 @@ const ProductCustomAcc = ({ accTitle }) => {
       >
         <Typography className="text-light">{accTitle}</Typography>
       </AccordionSummary>
-      <AccordionDetails className="bg-light"></AccordionDetails>
+      <AccordionDetails className="bg-light">
+        <div className="container bg-primary">
+          <div className="row p-2 bg-secondary">
+            <div className="col-md-12 p-3 bg-warning"></div>
+          </div>
+        </div>
+      </AccordionDetails>
     </Accordion>
   );
 };

@@ -5,11 +5,11 @@ import JacketLeather from "../images/leatherJacket.jpg";
 const HomePage = () => {
   return (
     <div className="homePage container-fluid">
-      <div className="row px-3">
+      <div className="row p-5">
         <div className="col-md-4 product-image">
           <img src={JacketLeather} alt="Leather Jacket" />
         </div>
-        <div className="col-md-8 px-5 product-content">
+        <div className="col-md-8 p-5 product-content">
           <div className="product-details">
             <h2 className="product-title">
               DESIGN YOUR OWN CUSTOM LEATHER JACKET
@@ -34,12 +34,9 @@ const HomePage = () => {
               purchase price - no questions asked. Ready to get a custom jacket
               handcrafted by our expert team?
             </p>
-            <br />
-            Stock
-            <br />
-            Brand
+            
           </div>
-          <NavLink to="/product" className="startOrder">
+          <NavLink to="/product" className="btnWebsite">
             Start your Order
           </NavLink>
         </div>

@@ -20,22 +20,3 @@
   flex-direction: column;
   justify-content: center;
 }
-
-.startOrder {
-  border: 2px solid #000;
-  border-left: 4px solid #000;
-  box-shadow: 0.2rem 0.2rem 0.2rem rgb(190, 190, 190);
-  color: #000;
-  text-decoration: none !important;
-  padding: 0.5rem 3rem;
-  border-radius: 3px;
-  margin-top: 2rem;
-  font-size: 0.8rem;
-  width: 200px;
-}
-
-.startOrder:hover {
-  background-color: #000;
-  color: #fff;
-  box-shadow: 0.4rem 0.4rem 0.4rem rgb(190, 190, 190);
-}

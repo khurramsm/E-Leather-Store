@@ -1,10 +1,14 @@
 .navbar {
   border-bottom: 1px solid #000;
+  backdrop-filter: blur(10px);
 }
 .navigation-links {
   text-decoration: none !important;
   color: #000;
   font-size: 1rem;
+}
+.navigation-links:hover {
+  color: saddlebrown;
 }
 .navigation-links span {
   font-size: 0.8rem;
