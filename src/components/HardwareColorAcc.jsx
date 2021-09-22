@@ -4,7 +4,7 @@ import AccordionDetails from "@material-ui/core/AccordionDetails";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import Typography from "@material-ui/core/Typography";
 
-const HardwareColorAcc = () => {
+const HardwareColorAcc = ({ hardwareColor, setHardwareColor }) => {
   return (
     <Accordion className="customizeProductButton">
       <AccordionSummary
@@ -21,29 +21,65 @@ const HardwareColorAcc = () => {
         <div className="container">
           <div className="row">
             <div className="col-md-12 mt-2 p-0 ">
-              <input type="radio" className="m-1" />
+              <input
+                value="No Changes"
+                onChange={(e) => setHardwareColor(e.target.value)}
+                type="radio"
+                className="m-1"
+                checked={hardwareColor === "No Changes"}
+              />
               No Changes (Same as in the picture)
             </div>
             <br />
             <br />
             <div className="col-md-2 p-0 ">
-              <input type="radio" className="m-1" />
+              <input
+                value="Antique"
+                onChange={(e) => setHardwareColor(e.target.value)}
+                type="radio"
+                className="m-1"
+                checked={hardwareColor === "Antique"}
+              />
               Antique
             </div>
             <div className="col-md-2 p-0 ">
-              <input type="radio" className="m-1" />
+              <input
+                value="Black"
+                onChange={(e) => setHardwareColor(e.target.value)}
+                type="radio"
+                className="m-1"
+                checked={hardwareColor === "Black"}
+              />
               Black
             </div>
             <div className="col-md-2 p-0 ">
-              <input type="radio" className="m-1" />
+              <input
+                value="Gold"
+                onChange={(e) => setHardwareColor(e.target.value)}
+                type="radio"
+                className="m-1"
+                checked={hardwareColor === "Gold"}
+              />
               Gold
             </div>
             <div className="col-md-2 p-0 ">
-              <input type="radio" className="m-1" />
+              <input
+                value="Silver"
+                onChange={(e) => setHardwareColor(e.target.value)}
+                type="radio"
+                className="m-1"
+                checked={hardwareColor === "Silver"}
+              />
               Silver
             </div>
             <div className="col-md-2 p-0 ">
-              <input type="radio" className="m-1" />
+              <input
+                value="Bronze"
+                onChange={(e) => setHardwareColor(e.target.value)}
+                type="radio"
+                className="m-1"
+                checked={hardwareColor === "Bronze"}
+              />
               Bronze
             </div>
           </div>

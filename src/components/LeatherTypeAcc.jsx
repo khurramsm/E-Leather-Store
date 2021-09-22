@@ -4,7 +4,7 @@ import AccordionDetails from "@material-ui/core/AccordionDetails";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import Typography from "@material-ui/core/Typography";
 
-const LeatherTypeAcc = () => {
+const LeatherTypeAcc = ({ leatherType, setLeatherType }) => {
   return (
     <Accordion className="customizeProductButton">
       <AccordionSummary
@@ -21,15 +21,33 @@ const LeatherTypeAcc = () => {
         <div className="container">
           <div className="row">
             <div className="col-md-4 p-0 mt-2">
-              <input type="radio" className="m-1" />
+              <input
+                value="Suitable Leather"
+                onChange={(e) => setLeatherType(e.target.value)}
+                type="radio"
+                className="m-1"
+                checked={leatherType === "Suitable Leather"}
+              />
               Suitable Leather
             </div>
             <div className="col-md-4 p-0 mt-2">
-              <input type="radio" className="m-1" />
+              <input
+                value="Sheep Leather"
+                onChange={(e) => setLeatherType(e.target.value)}
+                type="radio"
+                className="m-1"
+                checked={leatherType === "Sheep Leather"}
+              />
               Sheep Leather
             </div>
             <div className="col-md-4 p-0 mt-2">
-              <input type="radio" className="m-1" />
+              <input
+                value="Cow Leather"
+                onChange={(e) => setLeatherType(e.target.value)}
+                type="radio"
+                className="m-1"
+                checked={leatherType === "Cow Leather"}
+              />
               Cow Leather
             </div>
           </div>
