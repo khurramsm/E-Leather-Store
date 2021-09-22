@@ -10,6 +10,7 @@ import { useState } from "react";
 
 function App() {
   const [cart, setCart] = useState(0);
+  const [productPrice, setProductPrize] = useState(220);
   return (
     <div className="main-board">
       <Navigation cart={cart} />
@@ -17,7 +18,12 @@ function App() {
         <Route exact path="/" component={HomePage} />
         {/* <Route exact path="/product" component={ProductPage} /> */}
         <Route exact path="/product">
-          <ProductPage setCart={setCart} cart={cart} />
+          <ProductPage
+            setCart={setCart}
+            cart={cart}
+            productPrice={productPrice}
+            setProductPrize={setProductPrize}
+          />
         </Route>
         <Route exact path="/cart" component={CartPage} />
         <Route exact path="/checkout" component={CheckoutPage} />

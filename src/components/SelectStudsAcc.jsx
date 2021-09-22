@@ -4,7 +4,13 @@ import AccordionDetails from "@material-ui/core/AccordionDetails";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import Typography from "@material-ui/core/Typography";
 
-const SelectStudsAcc = () => {
+const SelectStudsAcc = ({
+  studsType,
+  setStudsType,
+  productPrice,
+  setProductPrice,
+}) => {
+  
   return (
     <Accordion className="customizeProductButton">
       <AccordionSummary
@@ -21,7 +27,13 @@ const SelectStudsAcc = () => {
         <div className="container">
           <div className="row">
             <div className="col-md-12 p-0 mt-2">
-              <input type="radio" className="m-1" />
+              <input
+                type="radio"
+                className="m-1"
+                value="No Changes"
+                checked={studsType === "No Changes"}
+                onChange={(e) => setStudsType(e.target.value)}
+              />
               No Changes (Same as in the picture)
             </div>
             <br />
@@ -40,6 +52,8 @@ const SelectStudsAcc = () => {
                 type="text"
                 placeholder="Enter Studs"
                 className="m-1"
+                value={studsType}
+                onChange={(e) => setStudsType(e.target.value)}
               />
             </div>
           </div>

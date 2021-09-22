@@ -15,10 +15,25 @@
   text-decoration: none !important;
   padding: 0.5rem 2rem;
   border-radius: 3px;
+  margin-top: 1.3rem;
+  font-size: 0.8rem;
+  width: 200px;
+  text-align: center;
+}
+.disBtnWebsite {
+  border: 2px solid #ccc;
+  border-left: 4px solid #ccc;
+  color: #ccc;
+  background-color: transparent;
+  outline: none !important;
+  text-decoration: none !important;
+  padding: 0.5rem 2rem;
+  border-radius: 3px;
   margin-top: 2rem;
   font-size: 0.8rem;
   width: 200px;
   text-align: center;
+  cursor: not-allowed;
 }
 
 .btnWebsite:hover {

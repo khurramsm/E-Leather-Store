@@ -7,7 +7,7 @@ import LiningColorAcc from "./LiningColorAcc";
 import HardwareColorAcc from "./HardwareColorAcc";
 import SelectStudsAcc from "./SelectStudsAcc";
 
-const ProductPage = ({ setCart, cart }) => {
+const ProductPage = ({ setCart, cart, productPrice, setProductPrice }) => {
   //Leather Jacket
   const [leatherColor, setLeatherColor] = useState("");
   const [leatherType, setLeatherType] = useState("");
@@ -17,6 +17,10 @@ const ProductPage = ({ setCart, cart }) => {
   const [studsType, setStudsType] = useState("");
   const [gender, setGender] = useState("");
   const [size, setSize] = useState("");
+
+  // if (studsType !== "" && studsType !== "No Changes") {
+  //   setProductPrice(280)
+  // }
 
   const onImageChange = (event) => {
     if (event.target.files && event.target.files[0]) {
@@ -31,7 +35,7 @@ const ProductPage = ({ setCart, cart }) => {
         <div className="row prow py-3">
           <div className="col-md-12">
             <div>
-              <h5>Step 1: Upload Images</h5>
+              <h5>Step 1: Upload Image</h5>
               <p>
                 Upload the image of the leather jacket you want to customize.
                 You can also explain the changes you want in the images and
@@ -46,7 +50,13 @@ const ProductPage = ({ setCart, cart }) => {
                 accept="image/jpeg, image/png"
               />
               {customDesignImage ? (
-                <img className="mt-1" src={customDesignImage} width="100px" height="100px" alt="custom design" />
+                <img
+                  className="mt-1"
+                  src={customDesignImage}
+                  width="100px"
+                  height="100px"
+                  alt="custom design"
+                />
               ) : (
                 ""
               )}
@@ -83,6 +93,8 @@ const ProductPage = ({ setCart, cart }) => {
               <SelectStudsAcc
                 studsType={studsType}
                 setStudsType={setStudsType}
+                setProductPrice={setProductPrice}
+                productPrice={productPrice}
               />
             </div>
             <div>
@@ -237,10 +249,33 @@ const ProductPage = ({ setCart, cart }) => {
                 </div>
               )}
             </div>
-            <div className="text-center">
-              <button className="btnWebsite" onClick={() => setCart(cart + 1)}>
-                Add to Cart
-              </button>
+            <div className="text-center mt-5">
+              <h3>
+                Total:{" "}
+                <span>
+                  $
+                  {studsType !== "" && studsType !== "No Changes"
+                    ? 280
+                    : productPrice}
+                </span>{" "}
+              </h3>
+              {!leatherColor && (
+                <button
+                  className="disBtnWebsite"
+                  onClick={() => setCart(cart + 1)}
+                >
+                  Add to Cart
+                </button>
+              )}
+              {leatherColor && (
+                <button
+                  className="btnWebsite"
+                  onClick={() => setCart(cart + 1)}
+                >
+                  Add to Cart
+                </button>
+              )}
+
               <br />
               <br />
               {cart > 0 && (
