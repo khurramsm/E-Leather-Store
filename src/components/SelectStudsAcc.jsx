@@ -10,7 +10,12 @@ const SelectStudsAcc = ({
   productPrice,
   setProductPrice,
 }) => {
-  
+  if (studsType === "" || studsType === "No Changes") {
+    setProductPrice(220);
+  } else {
+    setProductPrice(280);
+  }
+
   return (
     <Accordion className="customizeProductButton">
       <AccordionSummary
@@ -38,23 +43,148 @@ const SelectStudsAcc = ({
             </div>
             <br />
             <br />
-            <div className="col-md-2 p-0 ">
+            <div className="col-md-2 p-0">
               <input
-                style={{
-                  padding: ".5rem",
-                  paddingLeft: "0",
-                  border: "none",
-                  borderBottom: "1px solid #000",
-                  outline: "none",
-                  background: "transparent",
-                  width: "100%",
-                }}
-                type="text"
-                placeholder="Enter Studs"
-                className="m-1"
-                value={studsType}
+                value="Black Spikes"
                 onChange={(e) => setStudsType(e.target.value)}
+                type="radio"
+                className="m-1"
+                checked={studsType === "Black Spikes"}
               />
+              Black Spikes
+            </div>
+            <div className="col-md-2 p-0">
+              <input
+                value="Silver Spikes"
+                onChange={(e) => setStudsType(e.target.value)}
+                type="radio"
+                className="m-1"
+                checked={studsType === "Silver Spikes"}
+              />
+              Silver Spikes
+            </div>
+            <div className="col-md-2 p-0">
+              <input
+                value="Gold Spikes"
+                onChange={(e) => setStudsType(e.target.value)}
+                type="radio"
+                className="m-1"
+                checked={studsType === "Gold Spikes"}
+              />
+              Gold Spikes
+            </div>
+            <div className="col-md-2 p-0">
+              <input
+                value="Bronze Spikes"
+                onChange={(e) => setStudsType(e.target.value)}
+                type="radio"
+                className="m-1"
+                checked={studsType === "Bronze Spikes"}
+              />
+              Bronze Spikes
+            </div>
+            <div className="col-md-2 p-0">
+              <input
+                value="Gold Shark Fins"
+                onChange={(e) => setStudsType(e.target.value)}
+                type="radio"
+                className="m-1"
+                checked={studsType === "Gold Shark Fins"}
+              />
+              Gold Shark Fins
+            </div>
+            <div className="col-md-2 p-0">
+              <input
+                value="Black Shark Fins"
+                onChange={(e) => setStudsType(e.target.value)}
+                type="radio"
+                className="m-1"
+                checked={studsType === "Black Shark Fins"}
+              />
+              Black Shark Fins
+            </div>
+            <div className="col-md-2 p-0">
+              <input
+                value="Skull"
+                onChange={(e) => setStudsType(e.target.value)}
+                type="radio"
+                className="m-1"
+                checked={studsType === "Skull"}
+              />
+              Skull
+            </div>
+
+            <div className="col-md-2 p-0">
+              <input
+                value="Silver Pyramids"
+                onChange={(e) => setStudsType(e.target.value)}
+                type="radio"
+                className="m-1"
+                checked={studsType === "Silver Pyramids"}
+              />
+              Silver Pyramids
+            </div>
+            <div className="col-md-2 p-0">
+              <input
+                value="Black Pyramids"
+                onChange={(e) => setStudsType(e.target.value)}
+                type="radio"
+                className="m-1"
+                checked={studsType === "Black Pyramids"}
+              />
+              Black Pyramids
+            </div>
+
+            <div className="col-md-2 p-0">
+              <input
+                value="Silver Stars"
+                onChange={(e) => setStudsType(e.target.value)}
+                type="radio"
+                className="m-1"
+                checked={studsType === "Silver Stars"}
+              />
+              Silver Stars
+            </div>
+            <div className="col-md-2 p-0">
+              <input
+                value="Silver Alphabets"
+                onChange={(e) => setStudsType(e.target.value)}
+                type="radio"
+                className="m-1"
+                checked={studsType === "Silver Alphabets"}
+              />
+              Silver Alphabets
+            </div>
+
+            <div className="col-md-3 p-0">
+              <input
+                value="Tall Silver Tree Spikes"
+                onChange={(e) => setStudsType(e.target.value)}
+                type="radio"
+                className="m-1"
+                checked={studsType === "Tall Silver Tree Spikes"}
+              />
+              Tall Silver Tree Spikes
+            </div>
+            <div className="col-md-3 p-0">
+              <input
+                value="Short Silver Tree Spikes"
+                onChange={(e) => setStudsType(e.target.value)}
+                type="radio"
+                className="m-1"
+                checked={studsType === "Short Silver Tree Spikes"}
+              />
+              Short Silver Tree Spikes
+            </div>
+            <div className="col-md-3 p-0">
+              <input
+                value="Silver Mushroom Spikes"
+                onChange={(e) => setStudsType(e.target.value)}
+                type="radio"
+                className="m-1"
+                checked={studsType === "Silver Mushroom Spikes"}
+              />
+              Silver Mushroom Spikes
             </div>
           </div>
         </div>

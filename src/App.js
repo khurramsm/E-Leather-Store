@@ -6,24 +6,17 @@ import ContactPage from "./components/ContactPage";
 import { Switch, Route } from "react-router-dom";
 import Navigation from "./components/Navigation";
 import FooterPage from "./components/FooterPage";
-import { useState } from "react";
+// import { useState } from "react";
 
 function App() {
-  const [cart, setCart] = useState(0);
-  const [productPrice, setProductPrize] = useState(220);
   return (
     <div className="main-board">
-      <Navigation cart={cart} />
+      <Navigation />
       <Switch>
         <Route exact path="/" component={HomePage} />
         {/* <Route exact path="/product" component={ProductPage} /> */}
         <Route exact path="/product">
-          <ProductPage
-            setCart={setCart}
-            cart={cart}
-            productPrice={productPrice}
-            setProductPrize={setProductPrize}
-          />
+          <ProductPage />
         </Route>
         <Route exact path="/cart" component={CartPage} />
         <Route exact path="/checkout" component={CheckoutPage} />

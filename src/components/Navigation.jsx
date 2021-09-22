@@ -1,8 +1,10 @@
 import "../css/Navigation.css";
 import { NavLink } from "react-router-dom";
-// import logo from "../images/logo.png";
+import { useStateValue } from "../StateProvider";
 
-const Navigation = ({ cart }) => {
+const Navigation = () => {
+  const [{ basket }] = useStateValue();
+
   return (
     <nav className="navbar navbar-expand-md navbar-light fixed-top">
       <div className="container">
@@ -31,7 +33,7 @@ const Navigation = ({ cart }) => {
             </NavLink>
             <NavLink to="/cart" className="navigation-links mr-3">
               <i className="fas fa-shopping-cart"></i>
-              <span>{cart}</span>
+              <span>{basket.length}</span>
             </NavLink>
           </div>
         </div>

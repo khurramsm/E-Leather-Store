@@ -6,8 +6,9 @@ import LeatherTypeAcc from "./LeatherTypeAcc";
 import LiningColorAcc from "./LiningColorAcc";
 import HardwareColorAcc from "./HardwareColorAcc";
 import SelectStudsAcc from "./SelectStudsAcc";
+import { useStateValue } from "../StateProvider";
 
-const ProductPage = ({ setCart, cart, productPrice, setProductPrice }) => {
+const ProductPage = () => {
   //Leather Jacket
   const [leatherColor, setLeatherColor] = useState("");
   const [leatherType, setLeatherType] = useState("");
@@ -17,15 +18,31 @@ const ProductPage = ({ setCart, cart, productPrice, setProductPrice }) => {
   const [studsType, setStudsType] = useState("");
   const [gender, setGender] = useState("");
   const [size, setSize] = useState("");
-
-  // if (studsType !== "" && studsType !== "No Changes") {
-  //   setProductPrice(280)
-  // }
+  const [{ basket }, dispatch] = useStateValue();
+  const [productPrice, setProductPrice] = useState(220);
 
   const onImageChange = (event) => {
     if (event.target.files && event.target.files[0]) {
       setCustomDesignImage(URL.createObjectURL(event.target.files[0]));
     }
+  };
+
+  const onAddToCart = () => {
+    dispatch({
+      type: "ADD_TO_BASKET",
+      item: {
+        leatherColor,
+        leatherType,
+        liningColor,
+        hardwareColor,
+        studsType,
+        customDesignImage,
+        gender,
+        size,
+        productPrice,
+      },
+    });
+    console.log(basket);
   };
 
   return (
@@ -251,34 +268,19 @@ const ProductPage = ({ setCart, cart, productPrice, setProductPrice }) => {
             </div>
             <div className="text-center mt-5">
               <h3>
-                Total:{" "}
-                <span>
-                  $
-                  {studsType !== "" && studsType !== "No Changes"
-                    ? 280
-                    : productPrice}
-                </span>{" "}
+                Total: <span>${productPrice}</span>{" "}
               </h3>
-              {!leatherColor && (
-                <button
-                  className="disBtnWebsite"
-                  onClick={() => setCart(cart + 1)}
-                >
-                  Add to Cart
-                </button>
-              )}
-              {leatherColor && (
-                <button
-                  className="btnWebsite"
-                  onClick={() => setCart(cart + 1)}
-                >
+              {!customDesignImage || !gender || !size ? (
+                <button className="disBtnWebsite">Add to Cart</button>
+              ) : (
+                <button className="btnWebsite" onClick={onAddToCart}>
                   Add to Cart
                 </button>
               )}
 
               <br />
               <br />
-              {cart > 0 && (
+              {basket.length > 0 && (
                 <NavLink className="btnWebsite" to="/cart">
                   Proceed to Cart
                 </NavLink>
