@@ -1,13 +1,14 @@
 import "../css/Navigation.css";
 import { NavLink } from "react-router-dom";
-import logo from "../images/logo.png";
+// import logo from "../images/logo.png";
 
 const Navigation = ({ cart }) => {
   return (
     <nav className="navbar navbar-expand-md navbar-light fixed-top">
       <div className="container">
         <NavLink className="navbar-brand text-dark" to="/">
-          <img src={logo} alt="logo" />
+          {/* <img src={logo} alt="logo" /> */}
+          C. Leather Jacket
         </NavLink>
         <button
           className="navbar-toggler"

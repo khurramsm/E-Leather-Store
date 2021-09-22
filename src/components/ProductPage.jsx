@@ -72,6 +72,22 @@ const ProductPage = ({ setCart, cart }) => {
                 <div className="forMen">For Men</div>
                 <div className="forWoMen">For Women</div>
               </div>
+              <div className="my-2">
+                <small>Size Chart</small>
+                <div className="size-boxes">
+                  <div className="box">XS</div>
+                  <div className="box">S</div>
+                  <div className="box">M</div>
+                  <div className="box">L</div>
+                  <div className="box">XL</div>
+                  <div className="box">2XL</div>
+                  <div className="box">3XL</div>
+                  <div className="box custom-box">Customize Size</div>
+                </div>
+              </div>
+              <div className="custom-size-fields">
+                <div className="box">IN</div>
+              </div>
             </div>
             <div className="text-center">
               <button className="btnWebsite" onClick={() => setCart(cart + 1)}>
