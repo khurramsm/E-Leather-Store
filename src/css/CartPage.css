@@ -43,7 +43,10 @@
   .removeBtn {
     margin-top: 0;
   }
-  .payment-info h5{
+  .payment-info h5 {
     margin-top: 2rem;
+  }
+  .basket_heading {
+    font-size: 1.2rem;
   }
 }

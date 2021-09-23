@@ -20,7 +20,7 @@ const CheckoutPage = () => {
         </div>
       ) : (
         <div>
-          <h2 className="text-center basket__heading my-5">
+          <h2 className="text-center basket_heading my-5">
             Your Custom Leather Jacket
           </h2>
           <div className="container bg-light py-2 mb-5">
@@ -89,9 +89,9 @@ const CheckoutPage = () => {
               <div className="col-md-6 shipping-info">
                 <h5>Shipping Information</h5>
 
-                <input type="text" placeholder="Full Name" />
-                <input type="email" placeholder="Email" />
-                <textarea rows="3" type="text" placeholder="Address" />
+                <input type="text" placeholder="Your Name" />
+                <input type="email" placeholder="Your Email" />
+                <textarea rows="3" type="text" placeholder="Your Address" />
                 <br />
                 <input type="text" placeholder="City" />
                 <input type="text" placeholder="Country" />

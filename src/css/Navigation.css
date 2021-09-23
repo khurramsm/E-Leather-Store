@@ -2,6 +2,13 @@
   border-bottom: 1px solid #000;
   backdrop-filter: blur(10px);
 }
+
+.navbar-toggler {
+  outline: none !important;
+  border: none !important;
+  color: #000;
+}
+
 .navigation-links {
   text-decoration: none !important;
   color: #000;
@@ -14,7 +21,22 @@
   font-size: 0.8rem;
   color: saddlebrown;
 }
-.navbar-brand img{
+.navbar-brand img {
   width: 12px;
   height: 12px;
+}
+.f2 {
+  font-size: 1.5rem;
+}
+
+@media (max-width: 882px) {
+  .navigation-links {
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+  }
+  .navbar-nav {
+    text-align: center;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+  }
 }

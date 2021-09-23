@@ -1,0 +1,23 @@
+.contact-page {
+  margin-top: 3.6rem;
+  padding: 2rem;
+}
+.contact-page h4 {
+  font-size: 2.5rem;
+  font-weight: 300;
+}
+
+.contact-page input,
+.contact-page textarea {
+  width: 100%;
+  padding: 0.5rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  outline: none !important;
+  border: 1px solid #ccc;
+}
+.contact-page input:focus,
+.contact-page textarea:focus{
+  border: 1px solid #333;
+
+}

@@ -18,13 +18,13 @@ const CartPage = () => {
     <div className="cart-page">
       {basket?.length === 0 ? (
         <div>
-          <h2 className="text-center basket__heading my-5">
+          <h2 className="text-center basket_heading my-5">
             Your Basket is Empty :(
           </h2>
         </div>
       ) : (
         <div>
-          <h2 className="text-center basket__heading my-5">
+          <h2 className="text-center basket_heading my-5">
             Your Shopping Basket
           </h2>
           <div className="container bg-light py-2 mb-5">

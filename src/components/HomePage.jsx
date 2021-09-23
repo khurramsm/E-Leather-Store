@@ -4,7 +4,7 @@ import JacketLeather from "../images/leatherJacket.jpg";
 
 const HomePage = () => {
   return (
-    <div className="homePage container-fluid">
+    <div className="homePage container">
       <div className="row">
         <div className="col-md-4 product-image">
           <img src={JacketLeather} alt="Leather Jacket" />
