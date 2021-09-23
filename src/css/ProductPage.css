@@ -40,6 +40,7 @@
 .size-boxes {
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
 }
 .size-boxes .box {
   margin-right: 0.5rem;

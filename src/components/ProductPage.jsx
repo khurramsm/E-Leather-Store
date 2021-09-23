@@ -21,6 +21,15 @@ const ProductPage = () => {
   const [size, setSize] = useState("");
   const [{ basket }, dispatch] = useStateValue();
   const [productPrice, setProductPrice] = useState(220);
+  const [customSizing, setCustomSizing] = useState([]);
+
+  //Customize Design
+  const [sleeves, setSleeves] = useState("");
+  const [shoulder, setShoulder] = useState("");
+  const [chest, setChest] = useState("");
+  const [naturalWaist, setNaturalWaist] = useState("");
+  const [backLength, setBackLength] = useState("");
+  const [height, setHeight] = useState("");
 
   const onImageChange = (event) => {
     if (event.target.files && event.target.files[0]) {
@@ -29,6 +38,23 @@ const ProductPage = () => {
   };
 
   const id = uuidv4();
+
+  const onSizeAdd = () => {
+    customSizing.push([
+      `Chest: ${chest}`,
+      `Height: ${height}`,
+      `Sleeves: ${sleeves}`,
+      `Natural Waist: ${naturalWaist}`,
+      `Back Length: ${backLength}`,
+      `Shoulder: ${shoulder}`,
+    ]);
+    setSleeves("");
+    setShoulder("");
+    setChest("");
+    setNaturalWaist("");
+    setBackLength("");
+    setHeight("");
+  };
 
   const onAddToCart = () => {
     dispatch({
@@ -44,6 +70,7 @@ const ProductPage = () => {
         gender,
         size,
         productPrice,
+        customSizing,
       },
     });
   };
@@ -218,15 +245,16 @@ const ProductPage = () => {
                   </div>
                 </div>
                 <div
-                  className="box custom-box" onClick=
-                  {() => setSize("Customize Size")}
-                  style=
-                  {{
+                  className="box custom-box"
+                  onClick={() => setSize("Customize Size")}
+                  style={{
                     backgroundColor:
                       size === "Customize Size" ? "#000" : "transparent",
                     color: size === "Customize Size" ? "#fff" : "#000",
                   }}
-                  > Customize Size
+                >
+                  {" "}
+                  Customize Size
                 </div>
               </div>
               {size === "Customize Size" && (
@@ -235,36 +263,73 @@ const ProductPage = () => {
                     <div className="row">
                       <div className="col-md-4 mb-2 size-column">
                         <label>
-                          Chest(in) <input type="number" placeholder="in" />
+                          Chest(in){" "}
+                          <input
+                            value={chest}
+                            onChange={(e) => setChest(e.target.value)}
+                            type="number"
+                            placeholder="in"
+                          />
                         </label>
                       </div>
                       <div className="col-md-4 mb-2 size-column">
                         <label>
-                          Sleeves(in) <input type="number" placeholder="in" />
+                          Sleeves(in){" "}
+                          <input
+                            value={sleeves}
+                            onChange={(e) => setSleeves(e.target.value)}
+                            type="number"
+                            placeholder="in"
+                          />
                         </label>
                       </div>
                       <div className="col-md-4 mb-2 size-column">
                         <label>
-                          Shoulder(in) <input type="number" placeholder="in" />
+                          Shoulder(in){" "}
+                          <input
+                            value={shoulder}
+                            onChange={(e) => setShoulder(e.target.value)}
+                            type="number"
+                            placeholder="in"
+                          />
                         </label>
                       </div>
                       <div className="col-md-4 mb-2 size-column">
                         <label>
                           Natural Waist(in){" "}
-                          <input type="number" placeholder="in" />
+                          <input
+                            value={naturalWaist}
+                            onChange={(e) => setNaturalWaist(e.target.value)}
+                            type="number"
+                            placeholder="in"
+                          />
                         </label>
                       </div>
                       <div className="col-md-4 mb-2 size-column">
                         <label>
                           Back Length(in){" "}
-                          <input type="number" placeholder="in" />
+                          <input
+                            value={backLength}
+                            onChange={(e) => setBackLength(e.target.value)}
+                            type="number"
+                            placeholder="in"
+                          />
                         </label>
                       </div>
                       <div className="col-md-4 mb-2 size-column">
                         <label>
-                          Height(in) <input type="number" placeholder="in" />
+                          Height(in){" "}
+                          <input
+                            value={height}
+                            onChange={(e) => setHeight(e.target.value)}
+                            type="number"
+                            placeholder="in"
+                          />
                         </label>
                       </div>
+                      <button className="ml-3 btnWebsite" onClick={onSizeAdd}>
+                        Add
+                      </button>
                     </div>
                   </div>
                 </div>
@@ -274,12 +339,35 @@ const ProductPage = () => {
               <h3>
                 Total: <span>${productPrice}</span>{" "}
               </h3>
-              {!customDesignImage || !gender || !size ? (
-                <button className="disBtnWebsite">Add to Cart</button>
+
+              {size === "Customize Size" ? (
+                <>
+                  {customSizing.length === 0 ||
+                  !customDesignImage ||
+                  !gender ||
+                  !size ? (
+                    <button className="disBtnWebsite">Add to Cart</button>
+                  ) : (
+                    <button className="btnWebsite" onClick={onAddToCart}>
+                      <i className="fas fa-shopping-cart"></i> Add to Cart
+                    </button>
+                  )}
+                </>
               ) : (
-                <button className="btnWebsite" onClick={onAddToCart}>
-                  <i className="fas fa-shopping-cart"></i> Add to Cart
-                </button>
+                ""
+              )}
+              {size !== "Customize Size" ? (
+                <>
+                  {!customDesignImage || !gender || !size ? (
+                    <button className="disBtnWebsite">Add to Cart</button>
+                  ) : (
+                    <button className="btnWebsite" onClick={onAddToCart}>
+                      <i className="fas fa-shopping-cart"></i> Add to Cart
+                    </button>
+                  )}
+                </>
+              ) : (
+                ""
               )}
 
               <br />

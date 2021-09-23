@@ -1,5 +1,6 @@
 .shipping-info input,
-.shipping-info textarea {
+.shipping-info textarea,
+.payment-info input {
   width: 100%;
   padding: 0.5rem;
   margin-top: 1rem;
@@ -7,6 +8,7 @@
   border: 1px solid #ccc;
 }
 .shipping-info input:focus,
-.shipping-info textarea:focus{
+.shipping-info textarea:focus,
+.payment-info input:focus {
   border: 1px solid #333;
 }

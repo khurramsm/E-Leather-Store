@@ -10,7 +10,7 @@ const SelectStudsAcc = ({
   productPrice,
   setProductPrice,
 }) => {
-  if (studsType === "" || studsType === "No Changes") {
+  if (studsType === "No Changes") {
     setProductPrice(220);
   } else {
     setProductPrice(280);

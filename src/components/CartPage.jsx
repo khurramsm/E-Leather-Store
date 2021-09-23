@@ -6,7 +6,7 @@ import CurrencyFormat from "react-currency-format";
 
 const CartPage = () => {
   const [{ basket }, dispatch] = useStateValue();
-  
+
   const removeFromCart = (id) => {
     dispatch({
       type: "REMOVE_FROM_BASKET",
@@ -29,57 +29,73 @@ const CartPage = () => {
           </h2>
           <div className="container bg-light py-2 mb-5">
             <div className="row">
-              {basket.map((item, ind) => (
-                <div className="col-md-12 mb-3 cart-product" key={ind}>
-                  <div className="left-div">
-                    <img src={item.customDesignImage} alt="" />
+              {basket.map((item, ind) => {
+                const customSizingPro = item.customSizing;
+                const customSizeProdInd = customSizingPro[0];
+                return (
+                  <div className="col-md-12 mb-3 cart-product" key={ind}>
+                    <div className="left-div">
+                      <img src={item.customDesignImage} alt="" />
+                    </div>
+                    <div className="right-div">
+                      <p>
+                        {" "}
+                        <strong> Leather Color: </strong> {item.leatherColor}
+                      </p>
+                      <p>
+                        {" "}
+                        <strong> Leather Type: </strong> {item.leatherType}
+                      </p>
+                      <p>
+                        {" "}
+                        <strong> Lining Color: </strong> {item.liningColor}
+                      </p>
+                      <p>
+                        {" "}
+                        <strong> Hardware Color: </strong> {item.hardwareColor}
+                      </p>
+                    </div>
+                    <div className="right-div2">
+                      <p>
+                        {" "}
+                        <strong> Studs Type:</strong> {item.studsType}
+                      </p>
+                      <p>
+                        {" "}
+                        <strong> Gender:</strong> {item.gender}
+                      </p>
+                      <p>
+                        <strong> Size: </strong>
+                        {item.size === "Customize Size" ? (
+                          <ul>
+                            {customSizeProdInd.map((item, ind) => {
+                              return (
+                                <>
+                                  <li key={ind}>{item}</li>{" "}
+                                </>
+                              );
+                            })}
+                          </ul>
+                        ) : (
+                          <>{item.size}</>
+                        )}
+                      </p>
+                      <p>
+                        {" "}
+                        <strong> Price:</strong> {item.productPrice}
+                      </p>
+                    </div>
+                    <strong
+                      style={{ color: "crimson", cursor: "pointer" }}
+                      className="removeBtn text-center"
+                      onClick={() => removeFromCart(item.id)}
+                    >
+                      <i className="fa fa-times"></i>
+                      {"  "}Remove
+                    </strong>
                   </div>
-                  <div className="right-div">
-                    <p>
-                      {" "}
-                      <strong> Leather Color: </strong> {item.leatherColor}
-                    </p>
-                    <p>
-                      {" "}
-                      <strong> Leather Type: </strong> {item.leatherType}
-                    </p>
-                    <p>
-                      {" "}
-                      <strong> Lining Color: </strong> {item.liningColor}
-                    </p>
-                    <p>
-                      {" "}
-                      <strong> Hardware Color: </strong> {item.hardwareColor}
-                    </p>
-                  </div>
-                  <div className="right-div2">
-                    <p>
-                      {" "}
-                      <strong> Studs Type:</strong> {item.studsType}
-                    </p>
-                    <p>
-                      {" "}
-                      <strong> Gender:</strong> {item.gender}
-                    </p>
-                    <p>
-                      {" "}
-                      <strong> Size:</strong> {item.size}
-                    </p>
-                    <p>
-                      {" "}
-                      <strong> Price:</strong> {item.productPrice}
-                    </p>
-                  </div>
-                  <strong
-                    style={{ color: "crimson", cursor: "pointer" }}
-                    className="removeBtn text-center"
-                    onClick={() => removeFromCart(item.id)}
-                  >
-                    <i className="fa fa-times"></i>
-                    {"  "}Remove
-                  </strong>
-                </div>
-              ))}
+                );
+              })}
             </div>
           </div>
         </div>
@@ -105,9 +121,11 @@ const CartPage = () => {
         </NavLink>
         <br />
         <br />
-        <NavLink className="btnWebsite" to="/checkout">
-          Proceed to Checkout
-        </NavLink>
+        {basket.length > 0 && (
+          <NavLink className="btnWebsite" to="/checkout">
+            Proceed to Checkout
+          </NavLink>
+        )}
       </div>
     </div>
   );

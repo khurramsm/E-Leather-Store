@@ -43,4 +43,7 @@
   .removeBtn {
     margin-top: 0;
   }
+  .payment-info h5{
+    margin-top: 2rem;
+  }
 }
