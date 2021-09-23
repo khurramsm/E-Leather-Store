@@ -14,10 +14,7 @@ function App() {
       <Navigation />
       <Switch>
         <Route exact path="/" component={HomePage} />
-        {/* <Route exact path="/product" component={ProductPage} /> */}
-        <Route exact path="/product">
-          <ProductPage />
-        </Route>
+        <Route exact path="/product" component={ProductPage} />
         <Route exact path="/cart" component={CartPage} />
         <Route exact path="/checkout" component={CheckoutPage} />
         <Route exact path="/contact" component={ContactPage} />

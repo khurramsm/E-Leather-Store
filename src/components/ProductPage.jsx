@@ -7,15 +7,16 @@ import LiningColorAcc from "./LiningColorAcc";
 import HardwareColorAcc from "./HardwareColorAcc";
 import SelectStudsAcc from "./SelectStudsAcc";
 import { useStateValue } from "../StateProvider";
+import uuidv4 from "uuid/dist/v4";
 
 const ProductPage = () => {
   //Leather Jacket
-  const [leatherColor, setLeatherColor] = useState("");
-  const [leatherType, setLeatherType] = useState("");
-  const [liningColor, setLiningColor] = useState("");
-  const [hardwareColor, setHardwareColor] = useState("");
+  const [leatherColor, setLeatherColor] = useState("No Changes");
+  const [leatherType, setLeatherType] = useState("Suitable Leather");
+  const [liningColor, setLiningColor] = useState("No Changes");
+  const [hardwareColor, setHardwareColor] = useState("No Changes");
   const [customDesignImage, setCustomDesignImage] = useState(null);
-  const [studsType, setStudsType] = useState("");
+  const [studsType, setStudsType] = useState("No Changes");
   const [gender, setGender] = useState("");
   const [size, setSize] = useState("");
   const [{ basket }, dispatch] = useStateValue();
@@ -27,10 +28,13 @@ const ProductPage = () => {
     }
   };
 
+  const id = uuidv4();
+
   const onAddToCart = () => {
     dispatch({
       type: "ADD_TO_BASKET",
       item: {
+        id,
         leatherColor,
         leatherType,
         liningColor,
@@ -42,7 +46,6 @@ const ProductPage = () => {
         productPrice,
       },
     });
-    console.log(basket);
   };
 
   return (
@@ -192,6 +195,7 @@ const ProductPage = () => {
                   >
                     XL
                   </div>
+
                   <div
                     className="box"
                     onClick={() => setSize("2XL")}
@@ -214,15 +218,15 @@ const ProductPage = () => {
                   </div>
                 </div>
                 <div
-                  className="box custom-box"
-                  onClick={() => setSize("Customize Size")}
-                  style={{
+                  className="box custom-box" onClick=
+                  {() => setSize("Customize Size")}
+                  style=
+                  {{
                     backgroundColor:
                       size === "Customize Size" ? "#000" : "transparent",
                     color: size === "Customize Size" ? "#fff" : "#000",
                   }}
-                >
-                  Customize Size
+                  > Customize Size
                 </div>
               </div>
               {size === "Customize Size" && (
@@ -274,7 +278,7 @@ const ProductPage = () => {
                 <button className="disBtnWebsite">Add to Cart</button>
               ) : (
                 <button className="btnWebsite" onClick={onAddToCart}>
-                  Add to Cart
+                  <i className="fas fa-shopping-cart"></i> Add to Cart
                 </button>
               )}
 

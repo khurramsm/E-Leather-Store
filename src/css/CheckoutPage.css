@@ -1,0 +1,12 @@
+.shipping-info input,
+.shipping-info textarea {
+  width: 100%;
+  padding: 0.5rem;
+  margin-top: 1rem;
+  outline: none !important;
+  border: 1px solid #ccc;
+}
+.shipping-info input:focus,
+.shipping-info textarea:focus{
+  border: 1px solid #333;
+}
