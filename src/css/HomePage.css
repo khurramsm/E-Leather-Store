@@ -8,9 +8,12 @@
 }
 
 .homePage .product-image {
-  background-color: #fff;
+  background-color: #fffff1;
   box-shadow: 0.2rem 0.2rem 0.2rem #cccc;
   border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .homePage .product-image img {
   width: 100%;

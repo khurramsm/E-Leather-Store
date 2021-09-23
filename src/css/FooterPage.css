@@ -1,0 +1,46 @@
+.footer-page {
+  color: rgb(148, 148, 148) !important;
+  padding-top: 4rem;
+  padding-bottom: 2rem;
+}
+.footer-page h5 {
+  margin-bottom: 1.6rem;
+}
+.footer-page p {
+  text-align: justify;
+}
+.footer-page .link {
+  color: rgb(148, 148, 148) !important;
+  outline: none;
+  text-decoration: none;
+}
+.footer-page .link:hover {
+  color: rgb(224, 224, 224) !important;
+  outline: none;
+}
+.footer-page input {
+  outline: none !important;
+  padding: 0.5rem;
+  margin-bottom: 0.4rem;
+  border: 1px solid rgb(146, 146, 146);
+  background: transparent;
+  color: #fffff1;
+  border-radius: 5px;
+  width: 100%;
+}
+.footer-page input:focus {
+  border: 1px solid #ccc;
+}
+.footer-page input::placeholder {
+  color: #ccc;
+}
+.card-logo {
+  text-align: right;
+}
+.card-logo .card-logo1,
+.card-logo .card-logo2,
+.card-logo .card-logo3,
+.card-logo .card-logo4 {
+  font-size: 2rem;
+  margin-right: 1rem;
+}
