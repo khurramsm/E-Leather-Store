@@ -9,7 +9,6 @@ import SelectStudsAcc from "./SelectStudsAcc";
 import { useStateValue } from "../StateProvider";
 import uuidv4 from "uuid/dist/v4";
 import { storage } from "../firebase";
-import firebase from "firebase/app";
 
 const ProductPage = () => {
   //Leather Jacket
@@ -80,7 +79,6 @@ const ProductPage = () => {
         productPrice,
         customSizing,
         imageForFirebase,
-        orderTime: firebase.firestore.Timestamp.fromDate(new Date()),
       },
     });
   };

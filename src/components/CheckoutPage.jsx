@@ -5,6 +5,7 @@ import { useStateValue } from "../StateProvider";
 import { getBasketTotal } from "../reducer";
 import CurrencyFormat from "react-currency-format";
 import { useState } from "react";
+import firebase from "firebase/app";
 
 import { db } from "../firebase";
 
@@ -25,6 +26,7 @@ const CheckoutPage = () => {
     addUserOrder
       .add({
         orderDetails: basket,
+        orderTime: firebase.firestore.Timestamp.fromDate(new Date()),
         name: yourName,
         email: yourEmail,
         address: yourAddress,
@@ -33,13 +35,13 @@ const CheckoutPage = () => {
         postalCode,
       })
       .then(() => {
-        setSuccessOrder("Your post has been added👍");
         setYourEmail("");
         setYourName("");
         setYourAddress("");
         setCity("");
         setCountry("");
         setPostalCode("");
+        setSuccessOrder("Your Order Successfully Placed👍");
       })
       .catch((error) => {
         alert(error.message);
@@ -60,7 +62,7 @@ const CheckoutPage = () => {
       {basket?.length === 0 ? (
         <div>
           <h2 className="text-center basket__heading my-5">
-            No item for Checkout :(
+            No item for Checkout
           </h2>
         </div>
       ) : (
