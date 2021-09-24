@@ -8,6 +8,7 @@ import HardwareColorAcc from "./HardwareColorAcc";
 import SelectStudsAcc from "./SelectStudsAcc";
 import { useStateValue } from "../StateProvider";
 import uuidv4 from "uuid/dist/v4";
+import { storage } from "../firebase";
 
 const ProductPage = () => {
   //Leather Jacket
@@ -22,6 +23,7 @@ const ProductPage = () => {
   const [{ basket }, dispatch] = useStateValue();
   const [productPrice, setProductPrice] = useState(220);
   const [customSizing, setCustomSizing] = useState([]);
+  const [imageForFirebase, setImageForFirebase] = useState("");
 
   //Customize Design
   const [sleeves, setSleeves] = useState("");
@@ -31,9 +33,15 @@ const ProductPage = () => {
   const [backLength, setBackLength] = useState("");
   const [height, setHeight] = useState("");
 
-  const onImageChange = (event) => {
+  const onMediaChange = async (event) => {
     if (event.target.files && event.target.files[0]) {
       setCustomDesignImage(URL.createObjectURL(event.target.files[0]));
+      const media = event.target.files[0];
+      const storageRef = storage.ref();
+      const mediaRef = await storageRef.child(media.name);
+      await mediaRef.put(media);
+      setImageForFirebase(await mediaRef.getDownloadURL());
+      console.log(imageForFirebase);
     }
   };
 
@@ -71,6 +79,7 @@ const ProductPage = () => {
         size,
         productPrice,
         customSizing,
+        imageForFirebase,
       },
     });
   };
@@ -91,7 +100,7 @@ const ProductPage = () => {
                 and we will customize the leather jackets for you. excited?
               </p>
               <input
-                onChange={onImageChange}
+                onChange={onMediaChange}
                 type="file"
                 name="profile"
                 accept="image/jpeg, image/png"

@@ -5,10 +5,69 @@ import { useStateValue } from "../StateProvider";
 import { getBasketTotal } from "../reducer";
 import CurrencyFormat from "react-currency-format";
 import { useState } from "react";
+import firebase from "firebase/app";
+import { db } from "../firebase";
 
 const CheckoutPage = () => {
   const [{ basket }] = useStateValue();
   const [creditCard, setCreditCard] = useState(false);
+  const [yourName, setYourName] = useState("");
+  const [yourEmail, setYourEmail] = useState("");
+  const [yourAddress, setYourAddress] = useState("");
+  const [city, setCity] = useState("");
+  const [country, setCountry] = useState("");
+  const [postalCode, setPostalCode] = useState("");
+
+  const addUserOrder = db.collection("orders");
+
+  const onPlaceOrder = () => {
+    {
+      basket.map((item) => {
+        const customSizingPro = item.customSizing;
+        const customSizeProdInd = customSizingPro[0];
+        const jacketSize = item.size;
+        const leatherType = item.leatherType;
+        const leatherColor = item.leatherColor;
+        const liningColor = item.liningColor;
+        const hardwareColor = item.hardwareColor;
+        const studsType = item.studsType;
+        const gender = item.gender;
+        const price = item.productPrice;
+        const imageFirebase = item.imageForFirebase;
+        const orderId = item.id;
+        addUserOrder
+          .add({
+            name: yourName,
+            id: orderId,
+            avatar: imageFirebase,
+            customSizeProdInd: customSizeProdInd,
+            jacketSize: jacketSize,
+            leatherType: leatherType,
+            leatherColor: leatherColor,
+            liningColor: liningColor,
+            hardwareColor: hardwareColor,
+            studsType: studsType,
+            gender: gender,
+            price: price,
+            orderTime: firebase.firestore.Timestamp.fromDate(new Date()),
+          })
+          .then(() => {
+            console.log("Your post has been added👍");
+            setYourEmail("");
+            setYourName("");
+            setYourAddress("");
+            setCity("");
+            setCountry("");
+            setPostalCode("");
+          })
+          .catch((error) => {
+            alert(error.message);
+            alert(`Error! ${error}`);
+          });
+        return <div></div>;
+      });
+    }
+  };
 
   return (
     <div className="cart-page">
@@ -89,13 +148,44 @@ const CheckoutPage = () => {
               <div className="col-md-6 shipping-info">
                 <h5>Shipping Information</h5>
 
-                <input type="text" placeholder="Your Name" />
-                <input type="email" placeholder="Your Email" />
-                <textarea rows="3" type="text" placeholder="Your Address" />
+                <input
+                  value={yourName}
+                  onChange={(e) => setYourName(e.target.value)}
+                  type="text"
+                  placeholder="Your Name"
+                />
+                <input
+                  value={yourEmail}
+                  onChange={(e) => setYourEmail(e.target.value)}
+                  type="email"
+                  placeholder="Your Email"
+                />
+                <textarea
+                  value={yourAddress}
+                  onChange={(e) => setYourAddress(e.target.value)}
+                  rows="3"
+                  type="text"
+                  placeholder="Your Address"
+                />
                 <br />
-                <input type="text" placeholder="City" />
-                <input type="text" placeholder="Country" />
-                <input type="text" placeholder="Postal Code" />
+                <input
+                  value={city}
+                  onChange={(e) => setCity(e.target.value)}
+                  type="text"
+                  placeholder="City"
+                />
+                <input
+                  value={country}
+                  onChange={(e) => setCountry(e.target.value)}
+                  type="text"
+                  placeholder="Country"
+                />
+                <input
+                  value={postalCode}
+                  onChange={(e) => setPostalCode(e.target.value)}
+                  type="text"
+                  placeholder="Postal Code"
+                />
               </div>
               <div className="col-md-6 payment-info">
                 <h5>Payment Information</h5>
