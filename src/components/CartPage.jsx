@@ -31,7 +31,7 @@ const CartPage = () => {
             <div className="row">
               {basket.map((item, ind) => {
                 const customSizingPro = item.customSizing;
-                const customSizeProdInd = customSizingPro[0];
+
                 return (
                   <div className="col-md-12 mb-3 cart-product" key={ind}>
                     <div className="left-div">
@@ -68,7 +68,7 @@ const CartPage = () => {
                         <strong> Size: </strong>
                         {item.size === "Customize Size" ? (
                           <ul>
-                            {customSizeProdInd.map((item, ind) => {
+                            {customSizingPro.map((item, ind) => {
                               return (
                                 <>
                                   <li key={ind}>{item}</li>{" "}

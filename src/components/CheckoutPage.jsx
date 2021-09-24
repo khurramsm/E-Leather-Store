@@ -5,11 +5,11 @@ import { useStateValue } from "../StateProvider";
 import { getBasketTotal } from "../reducer";
 import CurrencyFormat from "react-currency-format";
 import { useState } from "react";
-import firebase from "firebase/app";
+
 import { db } from "../firebase";
 
 const CheckoutPage = () => {
-  const [{ basket }] = useStateValue();
+  const [{ basket }, dispatch] = useStateValue();
   const [creditCard, setCreditCard] = useState(false);
   const [yourName, setYourName] = useState("");
   const [yourEmail, setYourEmail] = useState("");
@@ -17,60 +17,46 @@ const CheckoutPage = () => {
   const [city, setCity] = useState("");
   const [country, setCountry] = useState("");
   const [postalCode, setPostalCode] = useState("");
+  const [successOrder, setSuccessOrder] = useState("");
 
   const addUserOrder = db.collection("orders");
 
   const onPlaceOrder = () => {
-    {
-      basket.map((item) => {
-        const customSizingPro = item.customSizing;
-        const customSizeProdInd = customSizingPro[0];
-        const jacketSize = item.size;
-        const leatherType = item.leatherType;
-        const leatherColor = item.leatherColor;
-        const liningColor = item.liningColor;
-        const hardwareColor = item.hardwareColor;
-        const studsType = item.studsType;
-        const gender = item.gender;
-        const price = item.productPrice;
-        const imageFirebase = item.imageForFirebase;
-        const orderId = item.id;
-        addUserOrder
-          .add({
-            name: yourName,
-            id: orderId,
-            avatar: imageFirebase,
-            customSizeProdInd: customSizeProdInd,
-            jacketSize: jacketSize,
-            leatherType: leatherType,
-            leatherColor: leatherColor,
-            liningColor: liningColor,
-            hardwareColor: hardwareColor,
-            studsType: studsType,
-            gender: gender,
-            price: price,
-            orderTime: firebase.firestore.Timestamp.fromDate(new Date()),
-          })
-          .then(() => {
-            console.log("Your post has been added👍");
-            setYourEmail("");
-            setYourName("");
-            setYourAddress("");
-            setCity("");
-            setCountry("");
-            setPostalCode("");
-          })
-          .catch((error) => {
-            alert(error.message);
-            alert(`Error! ${error}`);
-          });
-        return <div></div>;
+    addUserOrder
+      .add({
+        orderDetails: basket,
+        name: yourName,
+        email: yourEmail,
+        address: yourAddress,
+        city,
+        country,
+        postalCode,
+      })
+      .then(() => {
+        setSuccessOrder("Your post has been added👍");
+        setYourEmail("");
+        setYourName("");
+        setYourAddress("");
+        setCity("");
+        setCountry("");
+        setPostalCode("");
+      })
+      .catch((error) => {
+        alert(error.message);
+        alert(`Error! ${error}`);
       });
-    }
+    dispatch({
+      type: "EMPTY_BASKET",
+    });
   };
 
   return (
     <div className="cart-page">
+      <div>
+        <h2 className="text-center text-success basket__heading my-5">
+          {successOrder}
+        </h2>
+      </div>
       {basket?.length === 0 ? (
         <div>
           <h2 className="text-center basket__heading my-5">
@@ -86,7 +72,6 @@ const CheckoutPage = () => {
             <div className="row">
               {basket.map((item, ind) => {
                 const customSizingPro = item.customSizing;
-                const customSizeProdInd = customSizingPro[0];
                 return (
                   <div className="col-md-12 mb-3 cart-product" key={ind}>
                     <div className="left-div">
@@ -123,7 +108,7 @@ const CheckoutPage = () => {
                         <strong> Size: </strong>
                         {item.size === "Customize Size" ? (
                           <ul>
-                            {customSizeProdInd.map((item, ind) => {
+                            {customSizingPro.map((item, ind) => {
                               return (
                                 <>
                                   <li key={ind}>{item}</li>{" "}
@@ -190,11 +175,11 @@ const CheckoutPage = () => {
               <div className="col-md-6 payment-info">
                 <h5>Payment Information</h5>
 
-                <NavLink className="btnWebsite mr-1" to="">
+                <NavLink className="btnWebsite mr-3" to="">
                   <i class="fab fa-paypal"></i> PayPal
                 </NavLink>
                 <button
-                  className="btnWebsite"
+                  className="btnWebsite mr-3"
                   onClick={() => setCreditCard(!creditCard)}
                 >
                   <i class="fas fa-credit-card"></i> Credit or Debit
@@ -211,6 +196,9 @@ const CheckoutPage = () => {
                     <small> e.g: 123</small>
                   </>
                 )}
+                <button className="btnWebsite" onClick={onPlaceOrder}>
+                  Place Order
+                </button>
               </div>
             </div>
           </div>
@@ -233,11 +221,11 @@ const CheckoutPage = () => {
           prefix={"$ "}
         />
         {basket.length > 0 ? (
-          <NavLink className="mr-3 btnWebsite" to="/cart">
+          <NavLink className="my-3 btnWebsite" to="/cart">
             <i className="fas fa-shopping-cart"></i> Cart
           </NavLink>
         ) : (
-          <NavLink className="mr-3 btnWebsite" to="/product">
+          <NavLink className="btnWebsite" to="/product">
             Product Page
           </NavLink>
         )}

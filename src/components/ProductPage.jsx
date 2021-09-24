@@ -9,6 +9,7 @@ import SelectStudsAcc from "./SelectStudsAcc";
 import { useStateValue } from "../StateProvider";
 import uuidv4 from "uuid/dist/v4";
 import { storage } from "../firebase";
+import firebase from "firebase/app";
 
 const ProductPage = () => {
   //Leather Jacket
@@ -41,21 +42,20 @@ const ProductPage = () => {
       const mediaRef = await storageRef.child(media.name);
       await mediaRef.put(media);
       setImageForFirebase(await mediaRef.getDownloadURL());
-      console.log(imageForFirebase);
     }
   };
 
   const id = uuidv4();
 
   const onSizeAdd = () => {
-    customSizing.push([
+    customSizing.push(
       `Chest: ${chest}`,
       `Height: ${height}`,
       `Sleeves: ${sleeves}`,
       `Natural Waist: ${naturalWaist}`,
       `Back Length: ${backLength}`,
-      `Shoulder: ${shoulder}`,
-    ]);
+      `Shoulder: ${shoulder}`
+    );
     setSleeves("");
     setShoulder("");
     setChest("");
@@ -80,6 +80,7 @@ const ProductPage = () => {
         productPrice,
         customSizing,
         imageForFirebase,
+        orderTime: firebase.firestore.Timestamp.fromDate(new Date()),
       },
     });
   };
