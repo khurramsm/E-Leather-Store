@@ -5,7 +5,6 @@ import LeatherColorAcc from "./LeatherColorAcc";
 import LeatherTypeAcc from "./LeatherTypeAcc";
 import LiningColorAcc from "./LiningColorAcc";
 import HardwareColorAcc from "./HardwareColorAcc";
-import SelectStudsAcc from "./SelectStudsAcc";
 import { useStateValue } from "../StateProvider";
 import uuidv4 from "uuid/dist/v4";
 import { storage } from "../firebase";
@@ -16,8 +15,6 @@ const ProductPage = () => {
   const [leatherType, setLeatherType] = useState("Suitable Leather");
   const [liningColor, setLiningColor] = useState("No Changes");
   const [hardwareColor, setHardwareColor] = useState("No Changes");
-
-  const [studsType, setStudsType] = useState("No Changes");
   const [gender, setGender] = useState("");
   const [size, setSize] = useState("");
   const [{ basket }, dispatch] = useStateValue();
@@ -25,7 +22,8 @@ const ProductPage = () => {
   const [imageForFirebase, setImageForFirebase] = useState(null);
 
   //Customize Design
-  let customSizing = [];
+  const [customSizing, setCustomSizing] = useState([]);
+
   const [sleeves, setSleeves] = useState("");
   const [shoulder, setShoulder] = useState("");
   const [chest, setChest] = useState("");
@@ -62,6 +60,10 @@ const ProductPage = () => {
     setHeight("");
   };
 
+  if (size === "XS" || size === "S" || size === "M" || size === "L" || size === "XL" || size === "2XL" || size === "3XL"){
+    customSizing.length = 0;
+  }
+
   const onAddToCart = () => {
     dispatch({
       type: "ADD_TO_BASKET",
@@ -71,7 +73,6 @@ const ProductPage = () => {
         leatherType,
         liningColor,
         hardwareColor,
-        studsType,
         gender,
         size,
         productPrice,
@@ -143,33 +144,33 @@ const ProductPage = () => {
                 hardwareColor={hardwareColor}
                 setHardwareColor={setHardwareColor}
               />
-              <SelectStudsAcc
+              {/* <SelectStudsAcc
                 studsType={studsType}
                 setStudsType={setStudsType}
                 setProductPrice={setProductPrice}
                 productPrice={productPrice}
-              />
+              /> */}
             </div>
             <div>
               <h5>Step 3: Select Size</h5>
               <div className="gender">
                 <div
                   className="forMen"
-                  onClick={() => setGender("men")}
+                  onClick={() => setGender("Men")}
                   style={{
-                    backgroundColor: gender === "men" ? "#000" : "transparent",
-                    color: gender === "men" ? "#fff" : "#000",
+                    backgroundColor: gender === "Men" ? "#000" : "transparent",
+                    color: gender === "Men" ? "#fff" : "#000",
                   }}
                 >
                   For Men
                 </div>
                 <div
                   className="forWoMen"
-                  onClick={() => setGender("women")}
+                  onClick={() => setGender("Women")}
                   style={{
                     backgroundColor:
-                      gender === "women" ? "#000" : "transparent",
-                    color: gender === "women" ? "#fff" : "#000",
+                      gender === "Women" ? "#000" : "transparent",
+                    color: gender === "Women" ? "#fff" : "#000",
                   }}
                 >
                   For Women

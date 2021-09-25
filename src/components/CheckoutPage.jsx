@@ -20,8 +20,8 @@ const CheckoutPage = () => {
   const [postalCode, setPostalCode] = useState("");
   const [successOrder, setSuccessOrder] = useState("");
   const [totalPrice, setTotalPrice] = useState(0);
+  const [completeOrder] = useState(false);
 
-  let completeOrder = false;
   const addUserOrder = db.collection("orders");
 
   const onPlaceOrder = () => {
@@ -102,10 +102,7 @@ const CheckoutPage = () => {
                       </p>
                     </div>
                     <div className="right-div2">
-                      <p>
-                        {" "}
-                        <strong> Studs Type:</strong> {item.studsType}
-                      </p>
+                      
                       <p>
                         {" "}
                         <strong> Gender:</strong> {item.gender}

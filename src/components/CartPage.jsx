@@ -56,10 +56,7 @@ const CartPage = () => {
                       </p>
                     </div>
                     <div className="right-div2">
-                      <p>
-                        {" "}
-                        <strong> Studs Type:</strong> {item.studsType}
-                      </p>
+                   
                       <p>
                         {" "}
                         <strong> Gender:</strong> {item.gender}
