@@ -122,10 +122,10 @@ const ProductPage = () => {
                 studs, embroidery, design, and anything else you can think of!
                 So, let us know your requirements and we will make it happen.{" "}
                 <br />
-                <strong>Note:</strong>The default value of 'No change - As shown
-                in the Pictures' means that we will make no change in that area
-                on the jacket e.g. 'No Change' in Choosing Leather Color means
-                we will take the color as in the images uploaded by you.
+                <strong>Note:</strong> The default value of 'No change - As
+                shown in the Pictures' means that we will make no change in that
+                area on the jacket e.g. 'No Change' in Choosing Leather Color
+                means we will take the color as in the images uploaded by you.
               </p>
               <LeatherColorAcc
                 leatherColor={leatherColor}
