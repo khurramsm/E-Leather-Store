@@ -20,8 +20,8 @@ const CheckoutPage = () => {
   const [postalCode, setPostalCode] = useState("");
   const [successOrder, setSuccessOrder] = useState("");
   const [totalPrice, setTotalPrice] = useState(0);
-  
 
+  let completeOrder = false;
   const addUserOrder = db.collection("orders");
 
   const onPlaceOrder = () => {
@@ -35,7 +35,8 @@ const CheckoutPage = () => {
         city,
         country,
         postalCode,
-        totalPrice
+        totalPrice,
+        completeOrder,
       })
       .then(() => {
         setYourEmail("");
@@ -80,7 +81,7 @@ const CheckoutPage = () => {
                 return (
                   <div className="col-md-12 mb-3 cart-product" key={ind}>
                     <div className="left-div">
-                      <img src={item.customDesignImage} alt="" />
+                      <img src={item.imageForFirebase} alt="" />
                     </div>
                     <div className="right-div">
                       <p>
@@ -212,22 +213,23 @@ const CheckoutPage = () => {
       <div className="text-center my-3">
         <CurrencyFormat
           renderText={(value) => {
-            setTotalPrice(value)
-            return(
-            <>
-              <h5 className="mb-3">
-                Subtotal ({basket.length} item(s)) <br />{" "}
-                <strong>Total: {`${value}`}</strong>
-              </h5>
-            </>
-          )}}
+            setTotalPrice(value);
+            return (
+              <>
+                <h5 className="mb-3">
+                  Subtotal ({basket.length} item(s)) <br />{" "}
+                  <strong>Total: {`${value}`}</strong>
+                </h5>
+              </>
+            );
+          }}
           decimalScale={2}
           value={getBasketTotal(basket)}
           displayType={"text"}
           thousandSeparator={true}
           prefix={"$ "}
         />
-       
+
         {basket.length > 0 ? (
           <NavLink className="my-3 btnWebsite" to="/cart">
             <i className="fas fa-shopping-cart"></i> Cart

@@ -35,7 +35,7 @@ const CartPage = () => {
                 return (
                   <div className="col-md-12 mb-3 cart-product" key={ind}>
                     <div className="left-div">
-                      <img src={item.customDesignImage} alt="" />
+                      <img src={item.imageForFirebase} alt="" />
                     </div>
                     <div className="right-div">
                       <p>

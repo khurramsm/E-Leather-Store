@@ -16,16 +16,16 @@ const ProductPage = () => {
   const [leatherType, setLeatherType] = useState("Suitable Leather");
   const [liningColor, setLiningColor] = useState("No Changes");
   const [hardwareColor, setHardwareColor] = useState("No Changes");
-  const [customDesignImage, setCustomDesignImage] = useState(null);
+
   const [studsType, setStudsType] = useState("No Changes");
   const [gender, setGender] = useState("");
   const [size, setSize] = useState("");
   const [{ basket }, dispatch] = useStateValue();
   const [productPrice, setProductPrice] = useState(220);
-  const [customSizing, setCustomSizing] = useState([]);
-  const [imageForFirebase, setImageForFirebase] = useState("");
+  const [imageForFirebase, setImageForFirebase] = useState(null);
 
   //Customize Design
+  let customSizing = [];
   const [sleeves, setSleeves] = useState("");
   const [shoulder, setShoulder] = useState("");
   const [chest, setChest] = useState("");
@@ -35,7 +35,6 @@ const ProductPage = () => {
 
   const onMediaChange = async (event) => {
     if (event.target.files && event.target.files[0]) {
-      setCustomDesignImage(URL.createObjectURL(event.target.files[0]));
       const media = event.target.files[0];
       const storageRef = storage.ref();
       const mediaRef = await storageRef.child(media.name);
@@ -73,7 +72,6 @@ const ProductPage = () => {
         liningColor,
         hardwareColor,
         studsType,
-        customDesignImage,
         gender,
         size,
         productPrice,
@@ -104,12 +102,12 @@ const ProductPage = () => {
                 name="profile"
                 accept="image/jpeg, image/png"
               />
-              {customDesignImage ? (
+              {imageForFirebase ? (
                 <img
                   className="mt-1"
-                  src={customDesignImage}
-                  width="100px"
-                  height="100px"
+                  src={imageForFirebase}
+                  width="150px"
+                  height="150px"
                   alt="custom design"
                 />
               ) : (
@@ -351,7 +349,7 @@ const ProductPage = () => {
               {size === "Customize Size" ? (
                 <>
                   {customSizing.length === 0 ||
-                  !customDesignImage ||
+                  !imageForFirebase ||
                   !gender ||
                   !size ? (
                     <button className="disBtnWebsite">Add to Cart</button>
@@ -366,7 +364,7 @@ const ProductPage = () => {
               )}
               {size !== "Customize Size" ? (
                 <>
-                  {!customDesignImage || !gender || !size ? (
+                  {!imageForFirebase || !gender || !size ? (
                     <button className="disBtnWebsite">Add to Cart</button>
                   ) : (
                     <button className="btnWebsite" onClick={onAddToCart}>
