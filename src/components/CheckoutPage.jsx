@@ -19,6 +19,8 @@ const CheckoutPage = () => {
   const [country, setCountry] = useState("");
   const [postalCode, setPostalCode] = useState("");
   const [successOrder, setSuccessOrder] = useState("");
+  const [totalPrice, setTotalPrice] = useState(0);
+  
 
   const addUserOrder = db.collection("orders");
 
@@ -33,6 +35,7 @@ const CheckoutPage = () => {
         city,
         country,
         postalCode,
+        totalPrice
       })
       .then(() => {
         setYourEmail("");
@@ -208,20 +211,23 @@ const CheckoutPage = () => {
       )}
       <div className="text-center my-3">
         <CurrencyFormat
-          renderText={(value) => (
+          renderText={(value) => {
+            setTotalPrice(value)
+            return(
             <>
               <h5 className="mb-3">
                 Subtotal ({basket.length} item(s)) <br />{" "}
                 <strong>Total: {`${value}`}</strong>
               </h5>
             </>
-          )}
+          )}}
           decimalScale={2}
           value={getBasketTotal(basket)}
           displayType={"text"}
           thousandSeparator={true}
           prefix={"$ "}
         />
+       
         {basket.length > 0 ? (
           <NavLink className="my-3 btnWebsite" to="/cart">
             <i className="fas fa-shopping-cart"></i> Cart
