@@ -37,7 +37,7 @@ const CartPage = () => {
             <div className="row">
               {basket.map((item, ind) => {
                 const customSizingPro = item.customSizing;
-
+            
                 return (
                   <div className="col-md-12 mb-3 cart-product" key={ind}>
                     <div className="left-div">
@@ -84,7 +84,8 @@ const CartPage = () => {
                       </p>
                       <p>
                         {" "}
-                        <strong> Price:</strong> {item.productPrice}
+                        <strong> Price:</strong> {item.productPrice} X{" "}
+                        {item.quantityProduct} = {item.productPricingByQuantity}
                       </p>
                     </div>
                     <strong

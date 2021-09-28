@@ -66,6 +66,7 @@ const ProductPage = () => {
   };
 
   const id = uuidv4();
+  const productPricingByQuantity = productPrice * quantityProduct;
 
   const onSizeAdd = () => {
     customSizing.push(
@@ -110,6 +111,8 @@ const ProductPage = () => {
         productPrice,
         customSizing,
         imageForFirebase,
+        quantityProduct,
+        productPricingByQuantity,
       },
     });
   };
@@ -396,6 +399,8 @@ const ProductPage = () => {
               <h3>
                 Price: <span>${productPrice} / product</span>
                 <br />
+                Total: <span>${productPricingByQuantity}</span>
+                <br />
                 <small style={{ fontSize: ".9rem" }}>
                   {
                     "1 > 9 Product(s) Price: $250 || 10 > 99 Products Price: $175 || > 100 Products Price: $75"
@@ -408,6 +413,7 @@ const ProductPage = () => {
                   {customSizing.length === 0 ||
                   !imageForFirebase ||
                   !gender ||
+                  quantityProduct <= 0 ||
                   !size ? (
                     <button className="disBtnWebsite">Add to Cart</button>
                   ) : (
@@ -421,7 +427,10 @@ const ProductPage = () => {
               )}
               {size !== "Customize Size" ? (
                 <>
-                  {!imageForFirebase || !gender || !size ? (
+                  {!imageForFirebase ||
+                  !gender ||
+                  !size ||
+                  quantityProduct <= 0 ? (
                     <button className="disBtnWebsite">Add to Cart</button>
                   ) : (
                     <button className="btnWebsite" onClick={onAddToCart}>
