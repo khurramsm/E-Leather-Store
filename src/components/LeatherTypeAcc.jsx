@@ -29,6 +29,11 @@ const LeatherTypeAcc = ({ leatherType, setLeatherType }) => {
                 checked={leatherType === "Suitable Leather"}
               />
               Suitable Leather
+              <br />
+              <small className="leather-type-desc">
+                We will use whichever leather
+                <br /> is suitable for the making of this jacket.
+              </small>
             </div>
             <div className="col-md-4 p-0 mt-2">
               <input
@@ -39,6 +44,12 @@ const LeatherTypeAcc = ({ leatherType, setLeatherType }) => {
                 checked={leatherType === "Sheep Leather"}
               />
               Sheep Leather
+              <br />
+              <small className="leather-type-desc">
+                It is a soft leather and is usually used to make
+                fashion jacket. We use high Quality sheep leather by
+                selecting the best hides available.
+              </small>
             </div>
             <div className="col-md-4 p-0 mt-2">
               <input
@@ -49,6 +60,12 @@ const LeatherTypeAcc = ({ leatherType, setLeatherType }) => {
                 checked={leatherType === "Cow Leather"}
               />
               Cow Leather
+              <br />
+              <small className="leather-type-desc">
+                It is strong and long lasting leather. These robust
+                characteristics makes it suitable for biker or motorcycle
+                jacket.
+              </small>
             </div>
           </div>
         </div>
