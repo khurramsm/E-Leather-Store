@@ -56,17 +56,32 @@
   padding: 0.3rem;
   border: none;
   outline: none !important;
-  border-bottom: 1px solid #000;
-  border-right: 1px solid #000;
+  border: 1px solid #ccc;
+  width: 30%;
+  margin-top: 0.6rem;
+}
+.custom-form input:focus {
+  border: 1px solid #333;
 }
 .size-column label {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
+  flex-direction: column;
+}
+.image-input {
+  width: 30%;
 }
 
 @media (max-width: 882px) {
   .product-page h2,
   .product-page h5 {
     font-size: 1.2rem;
+  }
+  .image-input {
+    width: 100%;
+  }
+  .firebase-image {
+    width: 100%;
+    height: auto;
   }
 }

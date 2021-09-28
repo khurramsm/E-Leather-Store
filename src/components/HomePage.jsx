@@ -15,7 +15,7 @@ const HomePage = () => {
               DESIGN YOUR OWN CUSTOM LEATHER JACKET
             </h2>
             <h2 className="product-price">
-              <strong>$220</strong>
+              <strong>$250</strong>
             </h2>
             <p className="product-desc">
               Design a one-of-a-kind leather jacket crafted for you and only you

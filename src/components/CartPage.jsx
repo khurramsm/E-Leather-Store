@@ -3,9 +3,15 @@ import { NavLink } from "react-router-dom";
 import { useStateValue } from "../StateProvider";
 import { getBasketTotal } from "../reducer";
 import CurrencyFormat from "react-currency-format";
+import { useEffect } from "react";
 
 const CartPage = () => {
   const [{ basket }, dispatch] = useStateValue();
+
+  // This scroll page at top on navigation
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   const removeFromCart = (id) => {
     dispatch({
@@ -56,7 +62,6 @@ const CartPage = () => {
                       </p>
                     </div>
                     <div className="right-div2">
-                   
                       <p>
                         {" "}
                         <strong> Gender:</strong> {item.gender}

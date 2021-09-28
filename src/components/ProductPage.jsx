@@ -1,6 +1,6 @@
 import "../css/ProductPage.css";
 import { NavLink } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import LeatherColorAcc from "./LeatherColorAcc";
 import LeatherTypeAcc from "./LeatherTypeAcc";
 import LiningColorAcc from "./LiningColorAcc";
@@ -10,6 +10,11 @@ import uuidv4 from "uuid/dist/v4";
 import { storage } from "../firebase";
 
 const ProductPage = () => {
+  // This scroll page at top on navigation
+  useEffect(() => {
+    window.scrollTo(0,0)
+  }, [])
+  
   //Leather Jacket
   const [leatherColor, setLeatherColor] = useState("No Changes");
   const [leatherType, setLeatherType] = useState("Suitable Leather");
@@ -18,7 +23,6 @@ const ProductPage = () => {
   const [gender, setGender] = useState("");
   const [size, setSize] = useState("");
   const [{ basket }, dispatch] = useStateValue();
-  const [productPrice, setProductPrice] = useState(220);
   const [imageForFirebase, setImageForFirebase] = useState(null);
 
   //Customize Design
@@ -30,18 +34,22 @@ const ProductPage = () => {
   const [naturalWaist, setNaturalWaist] = useState("");
   const [backLength, setBackLength] = useState("");
   const [height, setHeight] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
   const onMediaChange = async (event) => {
     if (event.target.files && event.target.files[0]) {
+      setIsLoading(true);
       const media = event.target.files[0];
       const storageRef = storage.ref();
       const mediaRef = await storageRef.child(media.name);
       await mediaRef.put(media);
       setImageForFirebase(await mediaRef.getDownloadURL());
+      setIsLoading(false);
     }
   };
 
   const id = uuidv4();
+  const productPrice = 250;
 
   const onSizeAdd = () => {
     customSizing.push(
@@ -60,7 +68,15 @@ const ProductPage = () => {
     setHeight("");
   };
 
-  if (size === "XS" || size === "S" || size === "M" || size === "L" || size === "XL" || size === "2XL" || size === "3XL"){
+  if (
+    size === "XS" ||
+    size === "S" ||
+    size === "M" ||
+    size === "L" ||
+    size === "XL" ||
+    size === "2XL" ||
+    size === "3XL"
+  ) {
     customSizing.length = 0;
   }
 
@@ -102,10 +118,11 @@ const ProductPage = () => {
                 type="file"
                 name="profile"
                 accept="image/jpeg, image/png"
+                className="image-input bg-light"
               />
               {imageForFirebase ? (
                 <img
-                  className="mt-1"
+                  className="mt-1 firebase-image"
                   src={imageForFirebase}
                   width="150px"
                   height="150px"
@@ -114,6 +131,7 @@ const ProductPage = () => {
               ) : (
                 ""
               )}
+              {isLoading && <i className="fas fa-spinner fa-spin"></i>}
             </div>
             <div>
               <h5>Step 2: Customize Product (Optional)</h5>

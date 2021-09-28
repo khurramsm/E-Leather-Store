@@ -44,9 +44,9 @@ const FooterPage = () => {
           </div>
           <div className="card-logo col-md-6">
             <i className=" card-logo1 fab fa-cc-visa"></i>
-            <i className=" card-logo2 fab fa-cc-paypal"></i>
+            {/* <i className=" card-logo2 fab fa-cc-paypal"></i> */}
             <i className="card-logo3 fab fa-cc-mastercard"></i>
-            <i className="card-logo4 fab fa-cc-stripe"></i>
+            {/* <i className="card-logo4 fab fa-cc-stripe"></i> */}
           </div>
         </div>
       </div>

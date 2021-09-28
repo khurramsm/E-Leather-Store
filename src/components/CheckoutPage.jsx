@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom";
 import { useStateValue } from "../StateProvider";
 import { getBasketTotal } from "../reducer";
 import CurrencyFormat from "react-currency-format";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import firebase from "firebase/app";
 
 import { db } from "../firebase";
@@ -21,6 +21,11 @@ const CheckoutPage = () => {
   const [successOrder, setSuccessOrder] = useState("");
   const [totalPrice, setTotalPrice] = useState(0);
   const [completeOrder] = useState(false);
+
+  // This scroll page at top on navigation
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   const addUserOrder = db.collection("orders");
 
@@ -102,7 +107,6 @@ const CheckoutPage = () => {
                       </p>
                     </div>
                     <div className="right-div2">
-                      
                       <p>
                         {" "}
                         <strong> Gender:</strong> {item.gender}
