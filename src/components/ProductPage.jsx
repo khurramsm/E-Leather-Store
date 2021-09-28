@@ -12,9 +12,9 @@ import { storage } from "../firebase";
 const ProductPage = () => {
   // This scroll page at top on navigation
   useEffect(() => {
-    window.scrollTo(0,0)
-  }, [])
-  
+    window.scrollTo(0, 0);
+  }, []);
+
   //Leather Jacket
   const [leatherColor, setLeatherColor] = useState("No Changes");
   const [leatherType, setLeatherType] = useState("Suitable Leather");
@@ -24,6 +24,23 @@ const ProductPage = () => {
   const [size, setSize] = useState("");
   const [{ basket }, dispatch] = useStateValue();
   const [imageForFirebase, setImageForFirebase] = useState(null);
+  const [quantityProduct, setQuantityProduct] = useState(1);
+
+  let productPrice = 250;
+
+  if (quantityProduct >= 10) {
+    productPrice = 175;
+  }
+  if (quantityProduct >= 100) {
+    productPrice = 75;
+  }
+
+  const incrementQuantity = () => {
+    setQuantityProduct(quantityProduct + 1);
+  };
+  const decrementQuantity = () => {
+    setQuantityProduct(quantityProduct - 1);
+  };
 
   //Customize Design
   const [customSizing, setCustomSizing] = useState([]);
@@ -49,7 +66,6 @@ const ProductPage = () => {
   };
 
   const id = uuidv4();
-  const productPrice = 250;
 
   const onSizeAdd = () => {
     customSizing.push(
@@ -100,7 +116,7 @@ const ProductPage = () => {
 
   return (
     <div className="product-page container-fluid ">
-      <div className="container p-3">
+      <div className="container p-3 mt-1">
         <h2 className="text-center">Design Your Custom Leather Jacket Now!</h2>
         <div className="row prow py-3">
           <div className="col-md-12">
@@ -361,8 +377,30 @@ const ProductPage = () => {
               )}
             </div>
             <div className="text-center mt-5">
+              <div className="quantity-product">
+                <button onClick={() => decrementQuantity()} className="minus">
+                  {" "}
+                  -{" "}
+                </button>
+                <input
+                  className="quantity-input"
+                  type="number"
+                  value={quantityProduct}
+                  onChange={(e) => setQuantityProduct(e.target.value)}
+                />
+                <button onClick={() => incrementQuantity()} className="plus">
+                  {" "}
+                  +{" "}
+                </button>
+              </div>
               <h3>
-                Total: <span>${productPrice}</span>{" "}
+                Price: <span>${productPrice} / product</span>
+                <br />
+                <small style={{ fontSize: ".9rem" }}>
+                  {
+                    "1 > 9 Product(s) Price: $250 || 10 > 99 Products Price: $175 || > 100 Products Price: $75"
+                  }
+                </small>
               </h3>
 
               {size === "Customize Size" ? (

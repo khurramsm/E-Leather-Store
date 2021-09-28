@@ -1,5 +1,5 @@
 import "../css/HomePage.css";
-import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 import JacketLeather from "../images/leatherJacket.jpg";
 
 const HomePage = () => {
@@ -35,9 +35,10 @@ const HomePage = () => {
               handcrafted by our expert team?
             </p>
           </div>
-          <NavLink to="/product" className="btnWebsite">
-            Start your Order
-          </NavLink>
+
+          <Link to="/product" className="btnWebsite">
+            Start Your Order
+          </Link>
         </div>
       </div>
     </div>

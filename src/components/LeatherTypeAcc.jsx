@@ -20,7 +20,7 @@ const LeatherTypeAcc = ({ leatherType, setLeatherType }) => {
       <AccordionDetails className="bg-light">
         <div className="container">
           <div className="row">
-            <div className="col-md-4 p-0 mt-2">
+            <div className="col-md-4 p-2 mt-2 leather-type">
               <input
                 value="Suitable Leather"
                 onChange={(e) => setLeatherType(e.target.value)}
@@ -30,12 +30,12 @@ const LeatherTypeAcc = ({ leatherType, setLeatherType }) => {
               />
               Suitable Leather
               <br />
-              <small className="leather-type-desc">
-                We will use whichever leather
-                <br /> is suitable for the making of this jacket.
+              <small>
+                We will use whichever leather is suitable for the making of this
+                jacket.
               </small>
             </div>
-            <div className="col-md-4 p-0 mt-2">
+            <div className="col-md-4 p-2 mt-2 leather-type">
               <input
                 value="Sheep Leather"
                 onChange={(e) => setLeatherType(e.target.value)}
@@ -45,13 +45,13 @@ const LeatherTypeAcc = ({ leatherType, setLeatherType }) => {
               />
               Sheep Leather
               <br />
-              <small className="leather-type-desc">
-                It is a soft leather and is usually used to make
-                fashion jacket. We use high Quality sheep leather by
-                selecting the best hides available.
+              <small>
+                It is a soft leather and is usually used to make fashion jacket.
+                We use high Quality sheep leather by selecting the best hides
+                available.
               </small>
             </div>
-            <div className="col-md-4 p-0 mt-2">
+            <div className="col-md-4 p-2 mt-2 leather-type">
               <input
                 value="Cow Leather"
                 onChange={(e) => setLeatherType(e.target.value)}
@@ -61,7 +61,7 @@ const LeatherTypeAcc = ({ leatherType, setLeatherType }) => {
               />
               Cow Leather
               <br />
-              <small className="leather-type-desc">
+              <small>
                 It is strong and long lasting leather. These robust
                 characteristics makes it suitable for biker or motorcycle
                 jacket.

@@ -32,7 +32,7 @@ const HardwareColorAcc = ({ hardwareColor, setHardwareColor }) => {
             </div>
             <br />
             <br />
-            <div className="col-md-4 p-0 mt-2">
+            <div className="col-md-3 mt-2 p-2 leather-type">
               <input
                 value="Antique"
                 onChange={(e) => setHardwareColor(e.target.value)}
@@ -47,7 +47,7 @@ const HardwareColorAcc = ({ hardwareColor, setHardwareColor }) => {
                 alt="antique"
               />
             </div>
-            <div className="col-md-4 p-0 mt-2">
+            <div className="col-md-3 mt-2 p-2 leather-type">
               <input
                 value="Black"
                 onChange={(e) => setHardwareColor(e.target.value)}
@@ -62,7 +62,7 @@ const HardwareColorAcc = ({ hardwareColor, setHardwareColor }) => {
                 alt="black"
               />
             </div>
-            <div className="col-md-4 p-0 mt-2">
+            <div className="col-md-3 mt-2 p-2 leather-type">
               <input
                 value="Gold"
                 onChange={(e) => setHardwareColor(e.target.value)}
@@ -77,7 +77,7 @@ const HardwareColorAcc = ({ hardwareColor, setHardwareColor }) => {
                 alt="gold"
               />
             </div>
-            <div className="col-md-4 p-0 mt-2">
+            <div className="col-md-3 mt-2 p-2 leather-type">
               <input
                 value="Silver"
                 onChange={(e) => setHardwareColor(e.target.value)}
@@ -92,7 +92,7 @@ const HardwareColorAcc = ({ hardwareColor, setHardwareColor }) => {
                 alt="silver"
               />
             </div>
-            <div className="col-md-4 p-0 mt-2">
+            <div className="col-md-3 mt-2 p-2 leather-type">
               <input
                 value="Bronze"
                 onChange={(e) => setHardwareColor(e.target.value)}

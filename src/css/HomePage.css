@@ -25,6 +25,12 @@
   flex-direction: column;
   justify-content: center;
 }
+
+.modal-header {
+  display: flex;
+  align-items: center;
+}
+
 @media (max-width: 882px) {
   .product-content {
     padding: 2rem 0rem;

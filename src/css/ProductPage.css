@@ -14,7 +14,7 @@
   color: #000;
 }
 .product-page .prow {
-  margin-top: 0.5rem;
+  margin-top: 0.2rem;
   margin-bottom: 2.5rem;
 }
 .gender,
@@ -71,8 +71,37 @@
 .image-input {
   width: 30%;
 }
-
-
+.leather-type {
+  border: 1px solid #ccc;
+}
+.quantity-product {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+.quantity-product .minus,
+.quantity-product .plus {
+  border: 1px solid #333;
+  padding: 0.01rem 1rem;
+  font-weight: 600;
+  background-color: transparent;
+  outline: none !important;
+  margin: auto 0.4rem;
+}
+.quantity-product .minus:hover,
+.quantity-product .plus:hover {
+  background-color: #212121;
+  color: #fff;
+}
+.quantity-product .quantity-input {
+  width: 20% !important;
+  outline: none !important;
+  border: 1px solid #ccc;
+}
+.quantity-product .quantity-input:focus {
+  border: 1px solid #333;
+}
 @media (max-width: 882px) {
   .product-page h2,
   .product-page h5 {
