@@ -8,6 +8,7 @@ import { useState, useEffect } from "react";
 import firebase from "firebase/app";
 
 import { db } from "../firebase";
+import StripeContainer from "./StripeContainer";
 
 const CheckoutPage = () => {
   const [{ basket }, dispatch] = useStateValue();
@@ -21,6 +22,8 @@ const CheckoutPage = () => {
   const [successOrder, setSuccessOrder] = useState("");
   const [totalPrice, setTotalPrice] = useState(0);
   const [completeOrder] = useState(false);
+  const [paymentSuccess, setPaymentSuccess] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   // This scroll page at top on navigation
   useEffect(() => {
@@ -83,7 +86,7 @@ const CheckoutPage = () => {
             <div className="row">
               {basket.map((item, ind) => {
                 const customSizingPro = item.customSizing;
-              
+
                 return (
                   <div className="col-md-12 mb-3 cart-product" key={ind}>
                     <div className="left-div">
@@ -183,31 +186,33 @@ const CheckoutPage = () => {
               </div>
               <div className="col-md-6 payment-info">
                 <h5>Payment Information</h5>
-
-                <NavLink className="btnWebsite mr-3" to="">
-                  <i class="fab fa-paypal"></i> PayPal
-                </NavLink>
                 <button
                   className="btnWebsite mr-3"
                   onClick={() => setCreditCard(!creditCard)}
                 >
-                  <i class="fas fa-credit-card"></i> Credit or Debit
+                  <i className="fas fa-credit-card"></i> Credit or Debit
                 </button>
                 {creditCard && (
                   <>
-                    <input type="text" placeholder="Name on Card" />
-                    <small> e.g: John Smith</small>
-                    <input type="number" placeholder="Card Number" />
-                    <small> e.g: 42XXXXXXXXXX</small>
-                    <input type="number" placeholder="Expiry" />
-                    <small> e.g: 31/02/20XX</small>
-                    <input type="number" placeholder="CCV" />
-                    <small> e.g: 123</small>
+                    <StripeContainer
+                      paymentSuccess={paymentSuccess}
+                      setPaymentSuccess={setPaymentSuccess}
+                      isLoading={isLoading}
+                      setIsLoading={setIsLoading}
+                    />
                   </>
                 )}
-                <button className="btnWebsite" onClick={onPlaceOrder}>
-                  Place Order
-                </button>
+                {isLoading && (
+                  <>
+                    {" "}
+                    <i className="fas fa-spinner fa-spin"></i> Wait a while processing
+                  </>
+                )}
+                {paymentSuccess && (
+                  <button className="btnWebsite" onClick={onPlaceOrder}>
+                    Place Order
+                  </button>
+                )}
               </div>
             </div>
           </div>

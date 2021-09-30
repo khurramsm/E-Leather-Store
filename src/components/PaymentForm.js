@@ -1,6 +1,5 @@
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import axios from "axios";
-import { useState } from "react";
 import "../css/CheckoutPage.css";
 
 const CARD_OPTIONS = {
@@ -27,28 +26,34 @@ const CARD_OPTIONS = {
   },
 };
 
-export default function PaymentForm() {
-  const [success, setSuccess] = useState(false);
+export default function PaymentForm({
+  paymentSuccess,
+  setPaymentSuccess,
+  setIsLoading,
+}) {
   const stripe = useStripe();
   const elements = useElements();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
     const { error, paymentMethod } = await stripe.createPaymentMethod({
       type: "card",
       card: elements.getElement(CardElement),
     });
     if (!error) {
+      setIsLoading(true);
       try {
         const { id } = paymentMethod;
-        const response = await axios.post("http://locahost:4000/payment", {
+        const response = await axios.post("http://localhost:4000/payment", {
           // set jacket amount here
           amount: 1000,
           id,
         });
         if (response.data.success) {
           console.log("success payment");
-          setSuccess(true);
+          setPaymentSuccess(true);
+          setIsLoading(false);
         }
       } catch (error) {
         console.log("Error ", error);
@@ -59,7 +64,7 @@ export default function PaymentForm() {
   };
   return (
     <>
-      {!success ? (
+      {!paymentSuccess ? (
         <form onSubmit={handleSubmit}>
           <fieldset className="FormGroup">
             <div className="formRow">
@@ -69,8 +74,8 @@ export default function PaymentForm() {
           <button className="btnWebsite">Pay</button>
         </form>
       ) : (
-        <div>
-          <h2>Payment Success</h2>
+        <div className="mt-2 text-success">
+          <h5>Payment Success</h5>
         </div>
       )}
     </>
