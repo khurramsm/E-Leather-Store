@@ -42,6 +42,7 @@ export default function PaymentForm() {
       try {
         const { id } = paymentMethod;
         const response = await axios.post("http://locahost:4000/payment", {
+          // set jacket amount here
           amount: 1000,
           id,
         });
