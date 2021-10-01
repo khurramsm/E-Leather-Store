@@ -12,16 +12,19 @@ export default function StripeContainer({
   isLoading,
   orderAmount,
 }) {
+  console.log(orderAmount);
   return (
-    <Elements stripe={stripeTestPromise}>
-      {!isLoading && (
-        <PaymentForm
-          paymentSuccess={paymentSuccess}
-          setPaymentSuccess={setPaymentSuccess}
-          setIsLoading={setIsLoading}
-          orderAmount={orderAmount}
-        />
-      )}
-    </Elements>
+    <>
+      <Elements stripe={stripeTestPromise}>
+        {!isLoading && (
+          <PaymentForm
+            paymentSuccess={paymentSuccess}
+            setPaymentSuccess={setPaymentSuccess}
+            setIsLoading={setIsLoading}
+            orderAmount={orderAmount}
+          />
+        )}
+      </Elements>
+    </>
   );
 }

@@ -43,7 +43,7 @@ const CheckoutPage = () => {
         city,
         country,
         postalCode,
-        totalPrice,
+        totalPrice: parseInt(totalPrice),
         completeOrder,
       })
       .then(() => {
@@ -200,7 +200,7 @@ const CheckoutPage = () => {
                       setPaymentSuccess={setPaymentSuccess}
                       isLoading={isLoading}
                       setIsLoading={setIsLoading}
-                      orderAmount={totalPrice}
+                      orderAmount={parseInt(totalPrice)}
                     />
                   </>
                 )}
@@ -211,6 +211,7 @@ const CheckoutPage = () => {
                     processing
                   </>
                 )}
+                {/* Changes here */}
                 {paymentSuccess &&
                 yourName &&
                 yourAddress &&
@@ -236,7 +237,7 @@ const CheckoutPage = () => {
               <>
                 <h5 className="mb-3">
                   Subtotal ({basket.length} item(s)) <br />{" "}
-                  <strong>Total: {`${value}`}</strong>
+                  <strong>Total: ${`${value}`}</strong>
                 </h5>
               </>
             );
@@ -244,7 +245,6 @@ const CheckoutPage = () => {
           decimalScale={2}
           value={getBasketTotal(basket)}
           displayType={"text"}
-          thousandSeparator={true}
         />
 
         {basket.length > 0 ? (
