@@ -46,11 +46,14 @@ export default function PaymentForm({
       setIsLoading(true);
       try {
         const { id } = paymentMethod;
-        const response = await axios.post(`${REACT_APP_BASE_URL}/payment`, {
-          // set jacket amount here
-          amount: orderAmount * 100,
-          id,
-        });
+        const response = await axios.post(
+          `${process.env.REACT_APP_BASE_URL}/payment`,
+          {
+            // set jacket amount here
+            amount: orderAmount * 100,
+            id,
+          }
+        );
         if (response.data.success) {
           console.log("success payment");
           setPaymentSuccess(true);
