@@ -46,7 +46,7 @@ export default function PaymentForm({
       setIsLoading(true);
       try {
         const { id } = paymentMethod;
-        const response = await axios.post("http://localhost:4000/payment", {
+        const response = await axios.post(`${REACT_APP_BASE_URL}/payment`, {
           // set jacket amount here
           amount: orderAmount * 100,
           id,
