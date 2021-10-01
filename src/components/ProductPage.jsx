@@ -28,6 +28,7 @@ const ProductPage = () => {
 
   let productPrice = 250;
 
+
   if (quantityProduct >= 10) {
     productPrice = 175;
   }
@@ -36,7 +37,7 @@ const ProductPage = () => {
   }
 
   const incrementQuantity = () => {
-    setQuantityProduct(quantityProduct + 1);
+    setQuantityProduct( quantityProduct + 1);
   };
   const decrementQuantity = () => {
     setQuantityProduct(quantityProduct - 1);
@@ -385,12 +386,14 @@ const ProductPage = () => {
                   {" "}
                   -{" "}
                 </button>
-                <input
+                <div
                   className="quantity-input"
-                  type="number"
-                  value={quantityProduct}
-                  onChange={(e) => setQuantityProduct(e.target.value)}
-                />
+                  // type="number"
+                  // value={quantityProduct}
+                  // onChange={(e) => setQuantityProduct(e.target.value)}
+                >
+                  {quantityProduct}
+                </div>
                 <button onClick={() => incrementQuantity()} className="plus">
                   {" "}
                   +{" "}

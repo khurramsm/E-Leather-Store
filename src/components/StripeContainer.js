@@ -10,6 +10,7 @@ export default function StripeContainer({
   setPaymentSuccess,
   setIsLoading,
   isLoading,
+  orderAmount,
 }) {
   return (
     <Elements stripe={stripeTestPromise}>
@@ -18,6 +19,7 @@ export default function StripeContainer({
           paymentSuccess={paymentSuccess}
           setPaymentSuccess={setPaymentSuccess}
           setIsLoading={setIsLoading}
+          orderAmount={orderAmount}
         />
       )}
     </Elements>

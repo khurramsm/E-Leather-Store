@@ -30,6 +30,7 @@ export default function PaymentForm({
   paymentSuccess,
   setPaymentSuccess,
   setIsLoading,
+  orderAmount,
 }) {
   const stripe = useStripe();
   const elements = useElements();
@@ -47,7 +48,7 @@ export default function PaymentForm({
         const { id } = paymentMethod;
         const response = await axios.post("http://localhost:4000/payment", {
           // set jacket amount here
-          amount: 1000,
+          amount: orderAmount * 100,
           id,
         });
         if (response.data.success) {

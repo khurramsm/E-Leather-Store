@@ -192,26 +192,40 @@ const CheckoutPage = () => {
                 >
                   <i className="fas fa-credit-card"></i> Credit or Debit
                 </button>
+
                 {creditCard && (
                   <>
-                    <StripeContainer
-                      paymentSuccess={paymentSuccess}
-                      setPaymentSuccess={setPaymentSuccess}
-                      isLoading={isLoading}
-                      setIsLoading={setIsLoading}
-                    />
+                    {basket.map((item) => {
+                      return (
+                        <StripeContainer
+                          paymentSuccess={paymentSuccess}
+                          setPaymentSuccess={setPaymentSuccess}
+                          isLoading={isLoading}
+                          setIsLoading={setIsLoading}
+                          orderAmount={item.productPricingByQuantity}
+                        />
+                      );
+                    })}
                   </>
                 )}
                 {isLoading && (
                   <>
                     {" "}
-                    <i className="fas fa-spinner fa-spin"></i> Wait a while processing
+                    <i className="fas fa-spinner fa-spin"></i> Wait a while
+                    processing
                   </>
                 )}
-                {paymentSuccess && (
+                {paymentSuccess &&
+                yourName &&
+                yourAddress &&
+                yourEmail &&
+                city &&
+                country ? (
                   <button className="btnWebsite" onClick={onPlaceOrder}>
                     Place Order
                   </button>
+                ) : (
+                  ""
                 )}
               </div>
             </div>
