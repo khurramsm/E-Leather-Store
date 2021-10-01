@@ -195,17 +195,13 @@ const CheckoutPage = () => {
 
                 {creditCard && (
                   <>
-                    {basket.map((item) => {
-                      return (
-                        <StripeContainer
-                          paymentSuccess={paymentSuccess}
-                          setPaymentSuccess={setPaymentSuccess}
-                          isLoading={isLoading}
-                          setIsLoading={setIsLoading}
-                          orderAmount={item.productPricingByQuantity}
-                        />
-                      );
-                    })}
+                    <StripeContainer
+                      paymentSuccess={paymentSuccess}
+                      setPaymentSuccess={setPaymentSuccess}
+                      isLoading={isLoading}
+                      setIsLoading={setIsLoading}
+                      orderAmount={totalPrice}
+                    />
                   </>
                 )}
                 {isLoading && (
@@ -249,7 +245,6 @@ const CheckoutPage = () => {
           value={getBasketTotal(basket)}
           displayType={"text"}
           thousandSeparator={true}
-          prefix={"$ "}
         />
 
         {basket.length > 0 ? (
